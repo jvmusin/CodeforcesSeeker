@@ -11,38 +11,18 @@
     -fx-pref-width: 2000em;
     -fx-pref-height: 2000em;
     -fx-min-height: 1.3em;
+    -fx-alignment: center;
+    -fx-font-size: 1.3em;
+    -fx-font-weight: bold;
 }
 
 #titleLabel {
     -fx-background-color: khaki;
-    -fx-text-fill: blue;
-    -fx-alignment: center;
-    -fx-font-size: 1.3em;
-    -fx-font-weight: bold;
+    -fx-text-fill: cadetblue;
 }
 
 #defaultBeforeAndNowLabel {
-    -fx-background-color: "C4BA62";
-    -fx-text-fill: blue;
-    -fx-alignment: center;
-    -fx-font-size: 1.3em;
-    -fx-font-weight: bold;
-}
-
-#changedLabelBefore {
-    -fx-font-size: 1.5em;
-    -fx-background-color: red;
-    -fx-text-fill: black;
-    -fx-alignment: center;
-    -fx-font-weight: bold;
-}
-
-#changedLabelNow {
-    -fx-font-size: 1.5em;
-    -fx-background-color: lawngreen;
-    -fx-text-fill: white;
-    -fx-alignment: center;
-    -fx-font-weight: bold;
+    -fx-background-color: C4BA62;
 }
 
 #rememberButton {

@@ -14,46 +14,42 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.concurrent.ForkJoinPool;
 
 public class UserSeekerLayoutController implements Initializable {
-    @FXML private Label handlesHeaderLabel;
+    @FXML private VBox fullSide;
     @FXML private TabPane seekingUsersTabPane;
     @FXML private ListView<UserDataHolder> foundUsersListView;
     @FXML private TextField userFinderHandleField;
-    @FXML private Button userFinderFindButton;
     @FXML private Label userFinderStatusLabel;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ServiceHolder.setUserSeekerLayoutController(this);
         new UserSeeker().startSeeking();
-        try {
-            seekingUsersTabPane.getTabs().add(new Tab("first", FXMLLoader.load(getClass().getResource("/UserSeekerGrid.fxml"))));
-            seekingUsersTabPane.getTabs().add(new Tab("second", FXMLLoader.load(getClass().getResource("/UserSeekerGrid.fxml"))));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     @FXML
     public void startSeekingSelectedUsers(ActionEvent event) {
-        UserDataHolder selectedUserHolder = foundUsersListView.getSelectionModel().getSelectedItem();
-        seekingUsersTabPane.getTabs().add(new Tab(selectedUserHolder.getUser().getHandle(), selectedUserHolder.getFullUserPane()));
-
-        System.out.println("startSeekingSelectedUsers() meth");
+        foundUsersListView.getSelectionModel().getSelectedItems().forEach(userDataHolder ->
+                seekingUsersTabPane.getTabs().add(new Tab(userDataHolder.getUser().getHandle(), userDataHolder.getFullUserPane())));
     }
 
     @FXML
     public void removeSelectedUsers(ActionEvent event) {
-        System.out.println("removeSelectedUsers() meth");
+        List<UserDataHolder> selectedDataHolders = new ArrayList<>(foundUsersListView.getSelectionModel().getSelectedItems());
+
+        selectedDataHolders.forEach(userDataHolder -> {
+            ObservableList<Tab> tabs = seekingUsersTabPane.getTabs();
+            tabs.removeIf(tab -> tab.getText().equals(userDataHolder.getUser().getHandle()));
+        });
+
+        foundUsersListView.getItems().removeAll(selectedDataHolders);
     }
 
     @FXML

@@ -6,11 +6,11 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.effect.GaussianBlur?>
-<SplitPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" stylesheets="css/user-list-side.css" fx:controller="controller.UserSeekerLayoutController">
+<SplitPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" stylesheets="css/user-list-side.css" fx:controller="controller.UserSeekerLayoutController">
     <items>
-        <VBox id="fullSide">
+        <VBox fx:id="fullSide">
             <children>
-                <Label text="Handles" fx:id="handlesHeaderLabel" >
+                <Label text="Handles" id="handlesHeaderLabel" >
                     <effect>
                         <GaussianBlur radius="4" />
                     </effect>
@@ -27,7 +27,7 @@
                 </ListView>
                 <HBox id="userFinderBox" >
                     <TextField fx:id="userFinderHandleField" promptText="Enter your handle here" />
-                    <Button fx:id="userFinderFindButton" defaultButton="true" text="Find" onAction="#handleFind" />
+                    <Button id="userFinderFindButton" defaultButton="true" text="Find" onAction="#handleFind" />
                 </HBox>
                 <Label fx:id="userFinderStatusLabel" text="Found / not found username" />
             </children>

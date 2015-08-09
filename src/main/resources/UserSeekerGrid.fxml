@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns:fx="http://javafx.com/fxml/1" stylesheets="css/user-grid-side.css" fx:controller="controller.UserSeekerGridController" fx:id="fullUserPane">
+<VBox xmlns:fx="http://javafx.com/fxml" stylesheets="css/user-grid-side.css" fx:controller="controller.UserSeekerGridController" fx:id="fullUserPane">
     <GridPane id="userSeekerGrid">
         <children>
             <Label GridPane.rowIndex="0" GridPane.columnIndex="0"  text=""             id="titleLabel" style="-fx-background-color: darkgray" />
@@ -20,10 +20,10 @@
             <Label GridPane.rowIndex="8"  GridPane.columnIndex="0" text="City"         id="titleLabel" fx:id="defaultCityLabel"/>
             <Label GridPane.rowIndex="9"  GridPane.columnIndex="0" text="Organization" id="titleLabel" fx:id="defaultOrganizationLabel"/>
             <Label GridPane.rowIndex="10" GridPane.columnIndex="0" text="Contribution" id="titleLabel" fx:id="defaultContributionLabel"/>
-            <Label GridPane.rowIndex="11" GridPane.columnIndex="0" text="Rank"         id="titleLabel" fx:id="defaultRankLabel"/>
-            <Label GridPane.rowIndex="12" GridPane.columnIndex="0" text="Max.Rank"     id="titleLabel" fx:id="defaultMaxRankLabel"/>
-            <Label GridPane.rowIndex="13" GridPane.columnIndex="0" text="Rating"       id="titleLabel" fx:id="defaultRatingLabel"/>
-            <Label GridPane.rowIndex="14" GridPane.columnIndex="0" text="Max. Rating"  id="titleLabel" fx:id="defaultMaxRatingLabel"/>
+            <Label GridPane.rowIndex="11" GridPane.columnIndex="0" text="Rating"       id="titleLabel" fx:id="defaultRatingLabel"/>
+            <Label GridPane.rowIndex="12" GridPane.columnIndex="0" text="Rank"         id="titleLabel" fx:id="defaultRankLabel"/>
+            <Label GridPane.rowIndex="13" GridPane.columnIndex="0" text="Max. Rating"  id="titleLabel" fx:id="defaultMaxRatingLabel"/>
+            <Label GridPane.rowIndex="14" GridPane.columnIndex="0" text="Max. Rank"     id="titleLabel" fx:id="defaultMaxRankLabel"/>
             <Label GridPane.rowIndex="15" GridPane.columnIndex="0" text="Last visit"   id="titleLabel" fx:id="defaultLastVisitLabel"/>
             <Label GridPane.rowIndex="16" GridPane.columnIndex="0" text="Registered"   id="titleLabel" fx:id="defaultRegisteredLabel"/>
 
@@ -37,10 +37,10 @@
             <Label GridPane.rowIndex="8"  GridPane.columnIndex="1" text="" id="defaultBeforeAndNowLabel" fx:id="beforeCityLabel"/>
             <Label GridPane.rowIndex="9"  GridPane.columnIndex="1" text="" id="defaultBeforeAndNowLabel" fx:id="beforeOrganizationLabel"/>
             <Label GridPane.rowIndex="10" GridPane.columnIndex="1" text="" id="defaultBeforeAndNowLabel" fx:id="beforeContributionLabel"/>
-            <Label GridPane.rowIndex="11" GridPane.columnIndex="1" text="" id="defaultBeforeAndNowLabel" fx:id="beforeRankLabel"/>
-            <Label GridPane.rowIndex="12" GridPane.columnIndex="1" text="" id="defaultBeforeAndNowLabel" fx:id="beforeMaxRankLabel"/>
-            <Label GridPane.rowIndex="13" GridPane.columnIndex="1" text="" id="defaultBeforeAndNowLabel" fx:id="beforeRatingLabel"/>
-            <Label GridPane.rowIndex="14" GridPane.columnIndex="1" text="" id="defaultBeforeAndNowLabel" fx:id="beforeMaxRatingLabel"/>
+            <Label GridPane.rowIndex="11" GridPane.columnIndex="1" text="" id="defaultBeforeAndNowLabel" fx:id="beforeRatingLabel"/>
+            <Label GridPane.rowIndex="12" GridPane.columnIndex="1" text="" id="defaultBeforeAndNowLabel" fx:id="beforeRankLabel"/>
+            <Label GridPane.rowIndex="13" GridPane.columnIndex="1" text="" id="defaultBeforeAndNowLabel" fx:id="beforeMaxRatingLabel"/>
+            <Label GridPane.rowIndex="14" GridPane.columnIndex="1" text="" id="defaultBeforeAndNowLabel" fx:id="beforeMaxRankLabel"/>
             <Label GridPane.rowIndex="15" GridPane.columnIndex="1" text="" id="defaultBeforeAndNowLabel" fx:id="beforeLastVisitLabel"/>
             <Label GridPane.rowIndex="16" GridPane.columnIndex="1" text="" id="defaultBeforeAndNowLabel" fx:id="beforeRegisteredLabel"/>
 
@@ -54,10 +54,10 @@
             <Label GridPane.rowIndex="8"  GridPane.columnIndex="2" text="" id="defaultBeforeAndNowLabel" fx:id="nowCityLabel"/>
             <Label GridPane.rowIndex="9"  GridPane.columnIndex="2" text="" id="defaultBeforeAndNowLabel" fx:id="nowOrganizationLabel"/>
             <Label GridPane.rowIndex="10" GridPane.columnIndex="2" text="" id="defaultBeforeAndNowLabel" fx:id="nowContributionLabel"/>
-            <Label GridPane.rowIndex="11" GridPane.columnIndex="2" text="" id="defaultBeforeAndNowLabel" fx:id="nowRankLabel"/>
-            <Label GridPane.rowIndex="12" GridPane.columnIndex="2" text="" id="defaultBeforeAndNowLabel" fx:id="nowMaxRankLabel"/>
-            <Label GridPane.rowIndex="13" GridPane.columnIndex="2" text="" id="defaultBeforeAndNowLabel" fx:id="nowRatingLabel"/>
-            <Label GridPane.rowIndex="14" GridPane.columnIndex="2" text="" id="defaultBeforeAndNowLabel" fx:id="nowMaxRatingLabel"/>
+            <Label GridPane.rowIndex="11" GridPane.columnIndex="2" text="" id="defaultBeforeAndNowLabel" fx:id="nowRatingLabel"/>
+            <Label GridPane.rowIndex="12" GridPane.columnIndex="2" text="" id="defaultBeforeAndNowLabel" fx:id="nowRankLabel"/>
+            <Label GridPane.rowIndex="13" GridPane.columnIndex="2" text="" id="defaultBeforeAndNowLabel" fx:id="nowMaxRatingLabel"/>
+            <Label GridPane.rowIndex="14" GridPane.columnIndex="2" text="" id="defaultBeforeAndNowLabel" fx:id="nowMaxRankLabel"/>
             <Label GridPane.rowIndex="15" GridPane.columnIndex="2" text="" id="defaultBeforeAndNowLabel" fx:id="nowLastVisitLabel"/>
             <Label GridPane.rowIndex="16" GridPane.columnIndex="2" text="" id="defaultBeforeAndNowLabel" fx:id="nowRegisteredLabel"/>
         </children>

@@ -2,6 +2,7 @@
     -fx-background-color: aquamarine;
     -fx-font-family: "Comic Sans MS";
     -fx-max-width: 23em;
+    -fx-pref-width: 23em;
     -fx-min-width: 15.1em;
     -fx-padding: 1em;
     -fx-spacing: 0.8em;

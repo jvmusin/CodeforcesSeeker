@@ -1,0 +1,68 @@
+#fullSide {
+    -fx-background-color: aquamarine;
+    -fx-font-family: "Comic Sans MS";
+    -fx-max-width: 23em;
+    -fx-min-width: 15.1em;
+    -fx-padding: 1em;
+    -fx-spacing: 0.8em;
+    -fx-alignment: center;
+    -fx-max-height: 2000em;
+}
+
+#handlesHeaderLabel {
+    -fx-alignment: center;
+    -fx-font-family: Monospaced;
+    -fx-font-size: 3em;
+    -fx-font-weight: bold;
+    -fx-text-fill: blue;
+    -fx-min-height: 3em;
+}
+
+#foundUsersListView {
+    -fx-border-color: aqua;
+}
+
+#userFinderBox {
+    -fx-spacing: 0.8em;
+    -fx-alignment: center;
+    -fx-max-width: 2000em;
+}
+
+#userFinderHandleField {
+    -fx-alignment: center-left;
+    -fx-pref-width: 20em;
+}
+
+#userFinderFindButton {
+    -fx-alignment: center;
+    -fx-min-width: 5em;
+}
+
+#userFinderStatusLabel {
+    -fx-font-size: 1.5em;
+}
+
+#userFoundLabel {
+    -fx-font-size: 1.5em;
+    -fx-text-fill: green;
+}
+
+#userNotFoundLabel {
+    -fx-font-size: 1.5em;
+    -fx-text-fill: red;
+}
+
+#serverErrorLabel {
+    -fx-font-size: 1.5em;
+    -fx-text-fill: red;
+}
+
+#userFindingInProcessLabel {
+    -fx-font-size: 1.5em;
+    -fx-text-fill: yellow;
+}
+
+#seekingUsersTabPane {
+    -fx-padding: 1em;
+    -fx-background-color: mediumaquamarine;
+}

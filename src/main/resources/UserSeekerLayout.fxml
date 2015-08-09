@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.effect.GaussianBlur?>
+<SplitPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" stylesheets="css/user-list-side.css" fx:controller="controller.UserSeekerLayoutController">
+    <items>
+        <VBox id="fullSide">
+            <children>
+                <Label text="Handles" fx:id="handlesHeaderLabel" >
+                    <effect>
+                        <GaussianBlur radius="4" />
+                    </effect>
+                </Label>
+                <ListView fx:id="foundUsersListView" VBox.vgrow="ALWAYS">
+                    <contextMenu>
+                        <ContextMenu>
+                            <items>
+                                <MenuItem text="Start seeking" onAction="#startSeekingSelectedUsers" />
+                                <MenuItem text="Remove user" onAction="#removeSelectedUsers" />
+                            </items>
+                        </ContextMenu>
+                    </contextMenu>
+                </ListView>
+                <HBox id="userFinderBox" >
+                    <TextField fx:id="userFinderHandleField" promptText="Enter your handle here" />
+                    <Button fx:id="userFinderFindButton" defaultButton="true" text="Find" onAction="#handleFind" />
+                </HBox>
+                <Label fx:id="userFinderStatusLabel" text="Found / not found username" />
+            </children>
+        </VBox>
+        <TabPane fx:id="seekingUsersTabPane" />
+    </items>
+</SplitPane>

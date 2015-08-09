@@ -1,0 +1,46 @@
+#fullPane {
+    -fx-spacing: 0.5em;
+    -fx-alignment: center-right;
+}
+
+#userSeekerGrid {
+    -fx-grid-lines-visible: true;
+}
+
+.label {
+    -fx-pref-width: 2000em;
+    -fx-pref-height: 2000em;
+    -fx-min-height: 1.3em;
+}
+
+#titleLabel {
+    -fx-background-color: khaki;
+    -fx-text-fill: blue;
+    -fx-alignment: center;
+    -fx-font-size: 1.3em;
+    -fx-font-weight: bold;
+}
+
+#defaultBeforeAndNowLabel {
+    -fx-background-color: "C4BA62";
+    -fx-text-fill: blue;
+    -fx-alignment: center;
+    -fx-font-size: 1.3em;
+    -fx-font-weight: bold;
+}
+
+#changedLabelBefore {
+    -fx-font-size: 1.5em;
+    -fx-background-color: red;
+    -fx-text-fill: black;
+}
+
+#changedLabelNow {
+    -fx-font-size: 1.5em;
+    -fx-background-color: lawngreen;
+    -fx-text-fill: white;
+}
+
+#rememberButton {
+    -fx-font-size: 1.3em;
+}

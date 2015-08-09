@@ -23,7 +23,6 @@ public class User {
     private Integer registrationTimeSeconds;
 
     public User() {}
-
     public User(String handle) {
         this.handle = handle;
     }
@@ -31,92 +30,69 @@ public class User {
     public String getHandle() {
         return handle;
     }
-
     public String getEmail() {
         return email;
     }
-
     public String getVkId() {
         return vkId;
     }
-
     public String getOpenId() {
         return openId;
     }
-
     public String getFirstName() {
         return firstName;
     }
-
     public String getLastName() {
         return lastName;
     }
-
     public String getCountry() {
         return country;
     }
-
     public String getCity() {
         return city;
     }
-
     public String getOrganization() {
         return organization;
     }
-
     public Integer getContribution() {
         return contribution;
     }
-
     public String getRank() {
         return rank;
     }
-
     public String getMaxRank() {
         return maxRank;
     }
-
     public Integer getRating() {
         return rating;
     }
-
     public Integer getMaxRating() {
         return maxRating;
     }
-
     public Integer getLastOnlineTimeSeconds() {
         return lastOnlineTimeSeconds;
     }
-
     public Integer getRegistrationTimeSeconds() {
         return registrationTimeSeconds;
     }
 
-    public boolean equalsAllFields(Object o) {
-        if (this == o) return true;
-
-        if (!(o instanceof User)) return false;
-
-        User user = (User) o;
-
-        return new EqualsBuilder()
-                .append(getHandle(), user.getHandle())
-                .append(getEmail(), user.getEmail())
-                .append(getVkId(), user.getVkId())
-                .append(getOpenId(), user.getOpenId())
-                .append(getFirstName(), user.getFirstName())
-                .append(getLastName(), user.getLastName())
-                .append(getCountry(), user.getCountry())
-                .append(getCity(), user.getCity())
-                .append(getOrganization(), user.getOrganization())
-                .append(getContribution(), user.getContribution())
-                .append(getRank(), user.getRank())
-                .append(getMaxRank(), user.getMaxRank())
-                .append(getRating(), user.getRating())
-                .append(getMaxRating(), user.getMaxRating())
-                .append(getLastOnlineTimeSeconds(), user.getLastOnlineTimeSeconds())
-                .append(getRegistrationTimeSeconds(), user.getRegistrationTimeSeconds())
-                .isEquals();
+    public void cloneFieldsFrom(User anotherUser) {
+        this.handle = anotherUser.handle;
+        this.email = anotherUser.email;
+        this.vkId = anotherUser.vkId;
+        this.openId = anotherUser.openId;
+        this.firstName = anotherUser.firstName;
+        this.lastName = anotherUser.lastName;
+        this.country = anotherUser.country;
+        this.city = anotherUser.city;
+        this.organization = anotherUser.organization;
+        this.contribution = anotherUser.contribution;
+        this.rank = anotherUser.rank;
+        this.maxRank = anotherUser.maxRank;
+        this.rating = anotherUser.rating;
+        this.maxRating = anotherUser.maxRating;
+        this.lastOnlineTimeSeconds = anotherUser.lastOnlineTimeSeconds;
+        this.registrationTimeSeconds = anotherUser.registrationTimeSeconds;
     }
 
     @Override

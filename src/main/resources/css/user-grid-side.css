@@ -1,4 +1,4 @@
-#fullPane {
+#fullUserPane {
     -fx-spacing: 0.5em;
     -fx-alignment: center-right;
 }
@@ -33,12 +33,16 @@
     -fx-font-size: 1.5em;
     -fx-background-color: red;
     -fx-text-fill: black;
+    -fx-alignment: center;
+    -fx-font-weight: bold;
 }
 
 #changedLabelNow {
     -fx-font-size: 1.5em;
     -fx-background-color: lawngreen;
     -fx-text-fill: white;
+    -fx-alignment: center;
+    -fx-font-weight: bold;
 }
 
 #rememberButton {

@@ -45,6 +45,9 @@ public class UserSeekerLayoutController implements Initializable {
 
     @FXML
     public void startSeekingSelectedUsers(ActionEvent event) {
+        UserDataHolder selectedUserHolder = foundUsersListView.getSelectionModel().getSelectedItem();
+        seekingUsersTabPane.getTabs().add(new Tab(selectedUserHolder.getUser().getHandle(), selectedUserHolder.getFullUserPane()));
+
         System.out.println("startSeekingSelectedUsers() meth");
     }
 

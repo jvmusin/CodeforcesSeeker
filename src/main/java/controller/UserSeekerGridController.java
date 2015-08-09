@@ -1,18 +1,23 @@
 package controller;
 
 import base.User;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 public class UserSeekerGridController implements Initializable {
-    @FXML private GridPane userSeekerGrid;
+    @FXML private Pane fullUserPane;
 
     @FXML private Label defaultBeforeLabel;
     @FXML private Label defaultNowLabel;
@@ -68,7 +73,6 @@ public class UserSeekerGridController implements Initializable {
     @FXML private Label nowLastVisitLabel;
     @FXML private Label nowRegisteredLabel;
 
-    @FXML private Button rememberButton;
     private User user;
 
     @Override
@@ -111,73 +115,99 @@ public class UserSeekerGridController implements Initializable {
     public void setUser(User user) {
         this.user = user;
 
-        beforeHandleLabel.setText("beforeHandleLabel");
-        beforeEmailLabel.setText("beforeEmailLabel");
-        beforeVkIDLabel.setText("beforeVkIDLabel");
-        beforeOpenIDLabel.setText("beforeOpenIDLabel");
-        beforeFirstNameLabel.setText("beforeFirstNameLabel");
-        beforeLastNameLabel.setText("beforeLastNameLabel");
-        beforeCountryLabel.setText("beforeCountryLabel");
-        beforeCityLabel.setText("beforeCityLabel");
-        beforeOrganizationLabel.setText("beforeOrganizationLabel");
-        beforeContributionLabel.setText("beforeContributionLabel");
-        beforeRankLabel.setText("beforeRankLabel");
-        beforeMaxRankLabel.setText("beforeMaxRankLabel");
-        beforeRatingLabel.setText("beforeRatingLabel");
-        beforeMaxRatingLabel.setText("beforeMaxRatingLabel");
-        beforeLastVisitLabel.setText("beforeLastVisitLabel");
-        beforeRegisteredLabel.setText("beforeRegisteredLabel");
+        setLabelText(beforeHandleLabel, user.getHandle());
+        setLabelText(beforeEmailLabel, user.getEmail());
+        setLabelText(beforeVkIDLabel, user.getVkId());
+        setLabelText(beforeOpenIDLabel, user.getOpenId());
+        setLabelText(beforeFirstNameLabel, user.getFirstName());
+        setLabelText(beforeLastNameLabel, user.getLastName());
+        setLabelText(beforeCountryLabel, user.getCountry());
+        setLabelText(beforeCityLabel, user.getCity());
+        setLabelText(beforeOrganizationLabel, user.getOrganization());
+        setLabelText(beforeContributionLabel, user.getContribution());
+        setLabelText(beforeRankLabel, user.getRank());
+        setLabelText(beforeMaxRankLabel, user.getMaxRank());
+        setLabelText(beforeRatingLabel, user.getRating());
+        setLabelText(beforeMaxRatingLabel, user.getMaxRating());
+        setLabelText(beforeLastVisitLabel, user.getLastOnlineTimeSeconds());
+        setLabelText(beforeRegisteredLabel, user.getRegistrationTimeSeconds());
+
+        setLabelText(nowHandleLabel, user.getHandle());
+        setLabelText(nowEmailLabel, user.getEmail());
+        setLabelText(nowVkIDLabel, user.getVkId());
+        setLabelText(nowOpenIDLabel, user.getOpenId());
+        setLabelText(nowFirstNameLabel, user.getFirstName());
+        setLabelText(nowLastNameLabel, user.getLastName());
+        setLabelText(nowCountryLabel, user.getCountry());
+        setLabelText(nowCityLabel, user.getCity());
+        setLabelText(nowOrganizationLabel, user.getOrganization());
+        setLabelText(nowContributionLabel, user.getContribution());
+        setLabelText(nowRankLabel, user.getRank());
+        setLabelText(nowMaxRankLabel, user.getMaxRank());
+        setLabelText(nowRatingLabel, user.getRating());
+        setLabelText(nowMaxRatingLabel, user.getMaxRating());
+        setLabelText(nowLastVisitLabel, user.getLastOnlineTimeSeconds());
+        setLabelText(nowRegisteredLabel, user.getRegistrationTimeSeconds());
+    }
+    private void setLabelText(Label label, Object value) {
+        label.setText(value == null ? "" : value.toString());
     }
 
-    public void updateHandleLabels() { updateChangedLabels(beforeHandleLabel, nowHandleLabel); }
-    public void updateEmailLabels() { updateChangedLabels(beforeEmailLabel, nowEmailLabel); }
-    public void updateVkIDLabels() { updateChangedLabels(beforeVkIDLabel, nowVkIDLabel); }
-    public void updateOpenIDLabels() { updateChangedLabels(beforeOpenIDLabel, nowOpenIDLabel); }
-    public void updateFirstNameLabels() { updateChangedLabels(beforeFirstNameLabel, nowFirstNameLabel); }
-    public void updateLastNameLabels() { updateChangedLabels(beforeLastNameLabel, nowLastNameLabel); }
-    public void updateCountryLabels() { updateChangedLabels(beforeCountryLabel, nowCountryLabel); }
-    public void updateCityLabels() { updateChangedLabels(beforeCityLabel, nowCityLabel); }
-    public void updateOrganizationLabels() { updateChangedLabels(beforeOrganizationLabel, nowOrganizationLabel); }
-    public void updateContributionLabels() { updateChangedLabels(beforeContributionLabel, nowContributionLabel); }
-    public void updateRankLabels() { updateChangedLabels(beforeRankLabel, nowRankLabel); }
-    public void updateMaxRankLabels() { updateChangedLabels(beforeMaxRankLabel, nowMaxRankLabel); }
-    public void updateRatingLabels() { updateChangedLabels(beforeRatingLabel, nowRatingLabel); }
-    public void updateMaxRatingLabels() { updateChangedLabels(beforeMaxRatingLabel, nowMaxRatingLabel); }
-    public void updateLastVisitLabels() { updateChangedLabels(beforeLastVisitLabel, nowLastVisitLabel); }
-    public void updateRegisteredLabels() { updateChangedLabels(beforeRegisteredLabel, nowRegisteredLabel); }
+    public void updateHandleLabels(Object newValue) { updateChangedLabels(beforeHandleLabel, nowHandleLabel, newValue); }
+    public void updateEmailLabels(Object newValue) { updateChangedLabels(beforeEmailLabel, nowEmailLabel, newValue); }
+    public void updateVkIDLabels(Object newValue) { updateChangedLabels(beforeVkIDLabel, nowVkIDLabel, newValue); }
+    public void updateOpenIDLabels(Object newValue) { updateChangedLabels(beforeOpenIDLabel, nowOpenIDLabel, newValue); }
+    public void updateFirstNameLabels(Object newValue) { updateChangedLabels(beforeFirstNameLabel, nowFirstNameLabel, newValue); }
+    public void updateLastNameLabels(Object newValue) { updateChangedLabels(beforeLastNameLabel, nowLastNameLabel, newValue); }
+    public void updateCountryLabels(Object newValue) { updateChangedLabels(beforeCountryLabel, nowCountryLabel, newValue); }
+    public void updateCityLabels(Object newValue) { updateChangedLabels(beforeCityLabel, nowCityLabel, newValue); }
+    public void updateOrganizationLabels(Object newValue) { updateChangedLabels(beforeOrganizationLabel, nowOrganizationLabel, newValue); }
+    public void updateContributionLabels(Object newValue) { updateChangedLabels(beforeContributionLabel, nowContributionLabel, newValue); }
+    public void updateRankLabels(Object newValue) { updateChangedLabels(beforeRankLabel, nowRankLabel, newValue); }
+    public void updateMaxRankLabels(Object newValue) { updateChangedLabels(beforeMaxRankLabel, nowMaxRankLabel, newValue); }
+    public void updateRatingLabels(Object newValue) { updateChangedLabels(beforeRatingLabel, nowRatingLabel, newValue); }
+    public void updateMaxRatingLabels(Object newValue) { updateChangedLabels(beforeMaxRatingLabel, nowMaxRatingLabel, newValue); }
+    public void updateLastVisitLabels(Object newValue) { updateChangedLabels(beforeLastVisitLabel, nowLastVisitLabel, newValue); }
+    public void updateRegisteredLabels(Object newValue) { updateChangedLabels(beforeRegisteredLabel, nowRegisteredLabel, newValue); }
 
     public boolean updateUserIfPossible(User userNow) {
         boolean updated = false;
+        Object val;
 
-        if (!user.getHandle().equals(userNow.getHandle())) { updated = true; updateHandleLabels(); }
-        if (!user.getEmail().equals(userNow.getEmail())) { updated = true; updateEmailLabels(); }
-        if (!user.getVkId().equals(userNow.getVkId())) { updated = true; updateVkIDLabels(); }
-        if (!user.getOpenId().equals(userNow.getOpenId())) { updated = true; updateOpenIDLabels(); }
-        if (!user.getFirstName().equals(userNow.getFirstName())) { updated = true; updateFirstNameLabels(); }
-        if (!user.getLastName().equals(userNow.getLastName())) { updated = true; updateLastNameLabels(); }
-        if (!user.getCountry().equals(userNow.getCountry())) { updated = true; updateCountryLabels(); }
-        if (!user.getCity().equals(userNow.getCity())) { updated = true; updateCityLabels(); }
-        if (!user.getOrganization().equals(userNow.getOrganization())) { updated = true; updateOrganizationLabels(); }
-        if (!user.getContribution().equals(userNow.getContribution())) { updated = true; updateContributionLabels(); }
-        if (!user.getRank().equals(userNow.getRank())) { updated = true; updateRankLabels(); }
-        if (!user.getMaxRank().equals(userNow.getMaxRank())) { updated = true; updateMaxRankLabels(); }
-        if (!user.getRating().equals(userNow.getRating())) { updated = true; updateRatingLabels(); }
-        if (!user.getMaxRating().equals(userNow.getMaxRating())) { updated = true; updateMaxRatingLabels(); }
-        if (!user.getLastOnlineTimeSeconds().equals(userNow.getLastOnlineTimeSeconds())) { updated = true; updateLastVisitLabels(); }
-        if (!user.getRegistrationTimeSeconds().equals(userNow.getRegistrationTimeSeconds())) { updated = true; updateRegisteredLabels(); }
+        if (isValueChanged(user.getHandle(), val = userNow.getHandle())) { updated = true; updateHandleLabels(val); }
+        if (isValueChanged(user.getEmail(), val = userNow.getEmail())) { updated = true; updateEmailLabels(val); }
+        if (isValueChanged(user.getVkId(), val = userNow.getVkId())) { updated = true; updateVkIDLabels(val); }
+        if (isValueChanged(user.getOpenId(), val = userNow.getOpenId())) { updated = true; updateOpenIDLabels(val); }
+        if (isValueChanged(user.getFirstName(), val = userNow.getFirstName())) { updated = true; updateFirstNameLabels(val); }
+        if (isValueChanged(user.getLastName(), val = userNow.getLastName())) { updated = true; updateLastNameLabels(val); }
+        if (isValueChanged(user.getCountry(), val = userNow.getCountry())) { updated = true; updateCountryLabels(val); }
+        if (isValueChanged(user.getCity(), val = userNow.getCity())) { updated = true; updateCityLabels(val); }
+        if (isValueChanged(user.getOrganization(), val = userNow.getOrganization())) { updated = true; updateOrganizationLabels(val); }
+        if (isValueChanged(user.getContribution(), val = userNow.getContribution())) { updated = true; updateContributionLabels(val); }
+        if (isValueChanged(user.getRank(), val = userNow.getRank())) { updated = true; updateRankLabels(val); }
+        if (isValueChanged(user.getMaxRank(), val = userNow.getMaxRank())) { updated = true; updateMaxRankLabels(val); }
+        if (isValueChanged(user.getRating(), val = userNow.getRating())) { updated = true; updateRatingLabels(val); }
+        if (isValueChanged(user.getMaxRating(), val = userNow.getMaxRating())) { updated = true; updateMaxRatingLabels(val); }
+        if (isValueChanged(user.getLastOnlineTimeSeconds(), val = userNow.getLastOnlineTimeSeconds())) { updated = true; updateLastVisitLabels(val); }
+        if (isValueChanged(user.getRegistrationTimeSeconds(), val = userNow.getRegistrationTimeSeconds())) { updated = true; updateRegisteredLabels(val); }
 
-        return true;
+        if (updated) user.cloneFieldsFrom(userNow);
+        return updated;
+    }
+    private boolean isValueChanged(Object o1, Object o2) {
+        if (o1 == null && o2 == null) return false;
+        else if (o1 == null || o2 == null) return true;
+        else return !o1.equals(o2);
     }
 
-    private void updateChangedLabels(Label labelBefore, Label labelNow) {
+    private void updateChangedLabels(Label labelBefore, Label labelNow, Object newValue) {
+        //  Some work with type of labels like next line
+        Platform.runLater(() -> labelNow.setText(newValue == null ? "" : newValue.toString()));
+
         labelBefore.setId("changedLabelBefore");
         labelNow.setId("changedLabelNow");
     }
 
-    private void updateDefaultLabels(Label labelBefore, Label labelNow) {
-        labelBefore.setId("defaultBeforeAndNowLabel");
-        labelNow.setId("defaultBeforeAndNowLabel");
-    }
 
     @FXML private void rememberChanges(ActionEvent event) {
         beforeHandleLabel.setText(nowHandleLabel.getText()); updateDefaultLabels(beforeHandleLabel, nowHandleLabel);
@@ -196,5 +226,13 @@ public class UserSeekerGridController implements Initializable {
         beforeMaxRatingLabel.setText(nowMaxRatingLabel.getText()); updateDefaultLabels(beforeMaxRatingLabel, nowMaxRatingLabel);
         beforeLastVisitLabel.setText(nowLastVisitLabel.getText()); updateDefaultLabels(beforeLastVisitLabel, nowLastVisitLabel);
         beforeRegisteredLabel.setText(nowRegisteredLabel.getText()); updateDefaultLabels(beforeRegisteredLabel, nowRegisteredLabel);
+    }
+    private void updateDefaultLabels(Label labelBefore, Label labelNow) {
+        labelBefore.setId("defaultBeforeAndNowLabel");
+        labelNow.setId("defaultBeforeAndNowLabel");
+    }
+
+    public Pane getFullUserPane() {
+        return fullUserPane;
     }
 }

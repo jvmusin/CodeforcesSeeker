@@ -3,8 +3,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns:fx="http://javafx.com/fxml/1" stylesheets="css/user-grid-side.css" fx:controller="controller.UserSeekerGridController" id="fullPane">
-    <GridPane fx:id="userSeekerGrid">
+<VBox xmlns:fx="http://javafx.com/fxml/1" stylesheets="css/user-grid-side.css" fx:controller="controller.UserSeekerGridController" fx:id="fullUserPane">
+    <GridPane id="userSeekerGrid">
         <children>
             <Label GridPane.rowIndex="0" GridPane.columnIndex="0"  text=""             id="titleLabel" style="-fx-background-color: darkgray" />
             <Label GridPane.rowIndex="0" GridPane.columnIndex="1"  text="before"       id="titleLabel" fx:id="defaultBeforeLabel"/>
@@ -62,5 +62,5 @@
             <Label GridPane.rowIndex="16" GridPane.columnIndex="2" text="" id="defaultBeforeAndNowLabel" fx:id="nowRegisteredLabel"/>
         </children>
     </GridPane>
-    <Button text="Remember changes" fx:id="rememberButton" onAction="#rememberChanges"/>
+    <Button text="Remember changes" id="rememberButton" onAction="#rememberChanges"/>
 </VBox>

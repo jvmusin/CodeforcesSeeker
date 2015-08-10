@@ -14,17 +14,63 @@
     -fx-alignment: center;
     -fx-font-size: 1.3em;
     -fx-font-weight: bold;
+    -fx-text-fill: #404040;
+    -fx-background-color: C4BA62;
 }
 
-#titleLabel {
+.titleLabel {
     -fx-background-color: khaki;
     -fx-text-fill: cadetblue;
 }
 
-#defaultBeforeAndNowLabel {
-    -fx-background-color: C4BA62;
+.changedBeforeLabel {
+    -fx-background-color: black;
+}
+
+.changedNowLabel {
+    -fx-background-color: lawngreen;
 }
 
 #rememberButton {
     -fx-font-size: 1.3em;
+}
+
+.rankInternationalGrandmaster {
+    -fx-text-fill: #F00;
+}
+
+.rankGrandmaster {
+    -fx-text-fill: #F00;
+}
+
+.rankInternationalMaster {
+    -fx-text-fill: #FF8C00;
+}
+
+.rankMaster {
+    -fx-text-fill: #FF8C00;
+}
+
+.rankCandidateMaster {
+    -fx-text-fill: #A0A;
+}
+
+.rankExpert {
+    -fx-text-fill: #00F;
+}
+
+.rankSpecialist {
+    -fx-text-fill: #008000;
+}
+
+.rankPupil {
+    -fx-text-fill: #008000;
+}
+
+.rankNewbie {
+    -fx-text-fill: #7f7f7f;
+}
+
+.rankNobody {
+    -fx-text-fill: #F00;
 }

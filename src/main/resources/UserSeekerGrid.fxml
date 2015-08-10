@@ -6,60 +6,60 @@
 <VBox xmlns:fx="http://javafx.com/fxml" stylesheets="css/user-grid-side.css" fx:controller="controller.UserSeekerGridController" fx:id="fullUserPane">
     <GridPane id="userSeekerGrid">
         <children>
-            <Label GridPane.rowIndex="0" GridPane.columnIndex="0"  text=""             id="titleLabel" style="-fx-background-color: darkgray" />
-            <Label GridPane.rowIndex="0" GridPane.columnIndex="1"  text="before"       id="titleLabel" fx:id="defaultBeforeLabel"/>
-            <Label GridPane.rowIndex="0" GridPane.columnIndex="2"  text="now"          id="titleLabel" fx:id="defaultNowLabel"/>
+            <Label GridPane.rowIndex="0" GridPane.columnIndex="0"  text=""             styleClass="titleLabel" style="-fx-background-color: darkgray"/>
+            <Label GridPane.rowIndex="0" GridPane.columnIndex="1"  text="before"       styleClass="titleLabel" fx:id="defaultBeforeLabel"/>
+            <Label GridPane.rowIndex="0" GridPane.columnIndex="2"  text="now"          styleClass="titleLabel" fx:id="defaultNowLabel"/>
 
-            <Label GridPane.rowIndex="1"  GridPane.columnIndex="0" text="Handle"       id="titleLabel" fx:id="defaultHandleLabel"/>
-            <Label GridPane.rowIndex="2"  GridPane.columnIndex="0" text="Email"        id="titleLabel" fx:id="defaultEmailLabel" />
-            <Label GridPane.rowIndex="3"  GridPane.columnIndex="0" text="VK ID"        id="titleLabel" fx:id="defaultVkIDLabel" />
-            <Label GridPane.rowIndex="4"  GridPane.columnIndex="0" text="OpenID"       id="titleLabel" fx:id="defaultOpenIDLabel"/>
-            <Label GridPane.rowIndex="5"  GridPane.columnIndex="0" text="First name"   id="titleLabel" fx:id="defaultFirstNameLabel" />
-            <Label GridPane.rowIndex="6"  GridPane.columnIndex="0" text="Last name"    id="titleLabel" fx:id="defaultLastNameLabel"/>
-            <Label GridPane.rowIndex="7"  GridPane.columnIndex="0" text="Country"      id="titleLabel" fx:id="defaultCountryLabel"/>
-            <Label GridPane.rowIndex="8"  GridPane.columnIndex="0" text="City"         id="titleLabel" fx:id="defaultCityLabel"/>
-            <Label GridPane.rowIndex="9"  GridPane.columnIndex="0" text="Organization" id="titleLabel" fx:id="defaultOrganizationLabel"/>
-            <Label GridPane.rowIndex="10" GridPane.columnIndex="0" text="Contribution" id="titleLabel" fx:id="defaultContributionLabel"/>
-            <Label GridPane.rowIndex="11" GridPane.columnIndex="0" text="Rating"       id="titleLabel" fx:id="defaultRatingLabel"/>
-            <Label GridPane.rowIndex="12" GridPane.columnIndex="0" text="Rank"         id="titleLabel" fx:id="defaultRankLabel"/>
-            <Label GridPane.rowIndex="13" GridPane.columnIndex="0" text="Max. Rating"  id="titleLabel" fx:id="defaultMaxRatingLabel"/>
-            <Label GridPane.rowIndex="14" GridPane.columnIndex="0" text="Max. Rank"     id="titleLabel" fx:id="defaultMaxRankLabel"/>
-            <Label GridPane.rowIndex="15" GridPane.columnIndex="0" text="Last visit"   id="titleLabel" fx:id="defaultLastVisitLabel"/>
-            <Label GridPane.rowIndex="16" GridPane.columnIndex="0" text="Registered"   id="titleLabel" fx:id="defaultRegisteredLabel"/>
+            <Label GridPane.rowIndex="1"  GridPane.columnIndex="0" text="Handle"       styleClass="titleLabel" fx:id="defaultHandleLabel"/>
+            <Label GridPane.rowIndex="2"  GridPane.columnIndex="0" text="Email"        styleClass="titleLabel" fx:id="defaultEmailLabel" />
+            <Label GridPane.rowIndex="3"  GridPane.columnIndex="0" text="VK ID"        styleClass="titleLabel" fx:id="defaultVkIDLabel" />
+            <Label GridPane.rowIndex="4"  GridPane.columnIndex="0" text="OpenID"       styleClass="titleLabel" fx:id="defaultOpenIDLabel"/>
+            <Label GridPane.rowIndex="5"  GridPane.columnIndex="0" text="First name"   styleClass="titleLabel" fx:id="defaultFirstNameLabel" />
+            <Label GridPane.rowIndex="6"  GridPane.columnIndex="0" text="Last name"    styleClass="titleLabel" fx:id="defaultLastNameLabel"/>
+            <Label GridPane.rowIndex="7"  GridPane.columnIndex="0" text="Country"      styleClass="titleLabel" fx:id="defaultCountryLabel"/>
+            <Label GridPane.rowIndex="8"  GridPane.columnIndex="0" text="City"         styleClass="titleLabel" fx:id="defaultCityLabel"/>
+            <Label GridPane.rowIndex="9"  GridPane.columnIndex="0" text="Organization" styleClass="titleLabel" fx:id="defaultOrganizationLabel"/>
+            <Label GridPane.rowIndex="10" GridPane.columnIndex="0" text="Contribution" styleClass="titleLabel" fx:id="defaultContributionLabel"/>
+            <Label GridPane.rowIndex="11" GridPane.columnIndex="0" text="Rating"       styleClass="titleLabel" fx:id="defaultRatingLabel"/>
+            <Label GridPane.rowIndex="12" GridPane.columnIndex="0" text="Rank"         styleClass="titleLabel" fx:id="defaultRankLabel"/>
+            <Label GridPane.rowIndex="13" GridPane.columnIndex="0" text="Max. Rating"  styleClass="titleLabel" fx:id="defaultMaxRatingLabel"/>
+            <Label GridPane.rowIndex="14" GridPane.columnIndex="0" text="Max. Rank"    styleClass="titleLabel" fx:id="defaultMaxRankLabel"/>
+            <Label GridPane.rowIndex="15" GridPane.columnIndex="0" text="Last visit"   styleClass="titleLabel" fx:id="defaultLastVisitLabel"/>
+            <Label GridPane.rowIndex="16" GridPane.columnIndex="0" text="Registered"   styleClass="titleLabel" fx:id="defaultRegisteredLabel"/>
 
-            <Label GridPane.rowIndex="1"  GridPane.columnIndex="1" text="" id="defaultBeforeAndNowLabel" fx:id="beforeHandleLabel"/>
-            <Label GridPane.rowIndex="2"  GridPane.columnIndex="1" text="" id="defaultBeforeAndNowLabel" fx:id="beforeEmailLabel" />
-            <Label GridPane.rowIndex="3"  GridPane.columnIndex="1" text="" id="defaultBeforeAndNowLabel" fx:id="beforeVkIDLabel" />
-            <Label GridPane.rowIndex="4"  GridPane.columnIndex="1" text="" id="defaultBeforeAndNowLabel" fx:id="beforeOpenIDLabel"/>
-            <Label GridPane.rowIndex="5"  GridPane.columnIndex="1" text="" id="defaultBeforeAndNowLabel" fx:id="beforeFirstNameLabel" />
-            <Label GridPane.rowIndex="6"  GridPane.columnIndex="1" text="" id="defaultBeforeAndNowLabel" fx:id="beforeLastNameLabel"/>
-            <Label GridPane.rowIndex="7"  GridPane.columnIndex="1" text="" id="defaultBeforeAndNowLabel" fx:id="beforeCountryLabel"/>
-            <Label GridPane.rowIndex="8"  GridPane.columnIndex="1" text="" id="defaultBeforeAndNowLabel" fx:id="beforeCityLabel"/>
-            <Label GridPane.rowIndex="9"  GridPane.columnIndex="1" text="" id="defaultBeforeAndNowLabel" fx:id="beforeOrganizationLabel"/>
-            <Label GridPane.rowIndex="10" GridPane.columnIndex="1" text="" id="defaultBeforeAndNowLabel" fx:id="beforeContributionLabel"/>
-            <Label GridPane.rowIndex="11" GridPane.columnIndex="1" text="" id="defaultBeforeAndNowLabel" fx:id="beforeRatingLabel"/>
-            <Label GridPane.rowIndex="12" GridPane.columnIndex="1" text="" id="defaultBeforeAndNowLabel" fx:id="beforeRankLabel"/>
-            <Label GridPane.rowIndex="13" GridPane.columnIndex="1" text="" id="defaultBeforeAndNowLabel" fx:id="beforeMaxRatingLabel"/>
-            <Label GridPane.rowIndex="14" GridPane.columnIndex="1" text="" id="defaultBeforeAndNowLabel" fx:id="beforeMaxRankLabel"/>
-            <Label GridPane.rowIndex="15" GridPane.columnIndex="1" text="" id="defaultBeforeAndNowLabel" fx:id="beforeLastVisitLabel"/>
-            <Label GridPane.rowIndex="16" GridPane.columnIndex="1" text="" id="defaultBeforeAndNowLabel" fx:id="beforeRegisteredLabel"/>
+            <Label GridPane.rowIndex="1"  GridPane.columnIndex="1" text="" fx:id="beforeHandleLabel"/>
+            <Label GridPane.rowIndex="2"  GridPane.columnIndex="1" text="" fx:id="beforeEmailLabel" />
+            <Label GridPane.rowIndex="3"  GridPane.columnIndex="1" text="" fx:id="beforeVkIDLabel" />
+            <Label GridPane.rowIndex="4"  GridPane.columnIndex="1" text="" fx:id="beforeOpenIDLabel"/>
+            <Label GridPane.rowIndex="5"  GridPane.columnIndex="1" text="" fx:id="beforeFirstNameLabel" />
+            <Label GridPane.rowIndex="6"  GridPane.columnIndex="1" text="" fx:id="beforeLastNameLabel"/>
+            <Label GridPane.rowIndex="7"  GridPane.columnIndex="1" text="" fx:id="beforeCountryLabel"/>
+            <Label GridPane.rowIndex="8"  GridPane.columnIndex="1" text="" fx:id="beforeCityLabel"/>
+            <Label GridPane.rowIndex="9"  GridPane.columnIndex="1" text="" fx:id="beforeOrganizationLabel"/>
+            <Label GridPane.rowIndex="10" GridPane.columnIndex="1" text="" fx:id="beforeContributionLabel"/>
+            <Label GridPane.rowIndex="11" GridPane.columnIndex="1" text="" fx:id="beforeRatingLabel"/>
+            <Label GridPane.rowIndex="12" GridPane.columnIndex="1" text="" fx:id="beforeRankLabel"/>
+            <Label GridPane.rowIndex="13" GridPane.columnIndex="1" text="" fx:id="beforeMaxRatingLabel"/>
+            <Label GridPane.rowIndex="14" GridPane.columnIndex="1" text="" fx:id="beforeMaxRankLabel"/>
+            <Label GridPane.rowIndex="15" GridPane.columnIndex="1" text="" fx:id="beforeLastVisitLabel"/>
+            <Label GridPane.rowIndex="16" GridPane.columnIndex="1" text="" fx:id="beforeRegisteredLabel"/>
 
-            <Label GridPane.rowIndex="1"  GridPane.columnIndex="2" text="" id="defaultBeforeAndNowLabel" fx:id="nowHandleLabel"/>
-            <Label GridPane.rowIndex="2"  GridPane.columnIndex="2" text="" id="defaultBeforeAndNowLabel" fx:id="nowEmailLabel" />
-            <Label GridPane.rowIndex="3"  GridPane.columnIndex="2" text="" id="defaultBeforeAndNowLabel" fx:id="nowVkIDLabel" />
-            <Label GridPane.rowIndex="4"  GridPane.columnIndex="2" text="" id="defaultBeforeAndNowLabel" fx:id="nowOpenIDLabel"/>
-            <Label GridPane.rowIndex="5"  GridPane.columnIndex="2" text="" id="defaultBeforeAndNowLabel" fx:id="nowFirstNameLabel" />
-            <Label GridPane.rowIndex="6"  GridPane.columnIndex="2" text="" id="defaultBeforeAndNowLabel" fx:id="nowLastNameLabel"/>
-            <Label GridPane.rowIndex="7"  GridPane.columnIndex="2" text="" id="defaultBeforeAndNowLabel" fx:id="nowCountryLabel"/>
-            <Label GridPane.rowIndex="8"  GridPane.columnIndex="2" text="" id="defaultBeforeAndNowLabel" fx:id="nowCityLabel"/>
-            <Label GridPane.rowIndex="9"  GridPane.columnIndex="2" text="" id="defaultBeforeAndNowLabel" fx:id="nowOrganizationLabel"/>
-            <Label GridPane.rowIndex="10" GridPane.columnIndex="2" text="" id="defaultBeforeAndNowLabel" fx:id="nowContributionLabel"/>
-            <Label GridPane.rowIndex="11" GridPane.columnIndex="2" text="" id="defaultBeforeAndNowLabel" fx:id="nowRatingLabel"/>
-            <Label GridPane.rowIndex="12" GridPane.columnIndex="2" text="" id="defaultBeforeAndNowLabel" fx:id="nowRankLabel"/>
-            <Label GridPane.rowIndex="13" GridPane.columnIndex="2" text="" id="defaultBeforeAndNowLabel" fx:id="nowMaxRatingLabel"/>
-            <Label GridPane.rowIndex="14" GridPane.columnIndex="2" text="" id="defaultBeforeAndNowLabel" fx:id="nowMaxRankLabel"/>
-            <Label GridPane.rowIndex="15" GridPane.columnIndex="2" text="" id="defaultBeforeAndNowLabel" fx:id="nowLastVisitLabel"/>
-            <Label GridPane.rowIndex="16" GridPane.columnIndex="2" text="" id="defaultBeforeAndNowLabel" fx:id="nowRegisteredLabel"/>
+            <Label GridPane.rowIndex="1"  GridPane.columnIndex="2" text="" fx:id="nowHandleLabel"/>
+            <Label GridPane.rowIndex="2"  GridPane.columnIndex="2" text="" fx:id="nowEmailLabel" />
+            <Label GridPane.rowIndex="3"  GridPane.columnIndex="2" text="" fx:id="nowVkIDLabel" />
+            <Label GridPane.rowIndex="4"  GridPane.columnIndex="2" text="" fx:id="nowOpenIDLabel"/>
+            <Label GridPane.rowIndex="5"  GridPane.columnIndex="2" text="" fx:id="nowFirstNameLabel" />
+            <Label GridPane.rowIndex="6"  GridPane.columnIndex="2" text="" fx:id="nowLastNameLabel"/>
+            <Label GridPane.rowIndex="7"  GridPane.columnIndex="2" text="" fx:id="nowCountryLabel"/>
+            <Label GridPane.rowIndex="8"  GridPane.columnIndex="2" text="" fx:id="nowCityLabel"/>
+            <Label GridPane.rowIndex="9"  GridPane.columnIndex="2" text="" fx:id="nowOrganizationLabel"/>
+            <Label GridPane.rowIndex="10" GridPane.columnIndex="2" text="" fx:id="nowContributionLabel"/>
+            <Label GridPane.rowIndex="11" GridPane.columnIndex="2" text="" fx:id="nowRatingLabel"/>
+            <Label GridPane.rowIndex="12" GridPane.columnIndex="2" text="" fx:id="nowRankLabel"/>
+            <Label GridPane.rowIndex="13" GridPane.columnIndex="2" text="" fx:id="nowMaxRatingLabel"/>
+            <Label GridPane.rowIndex="14" GridPane.columnIndex="2" text="" fx:id="nowMaxRankLabel"/>
+            <Label GridPane.rowIndex="15" GridPane.columnIndex="2" text="" fx:id="nowLastVisitLabel"/>
+            <Label GridPane.rowIndex="16" GridPane.columnIndex="2" text="" fx:id="nowRegisteredLabel"/>
         </children>
     </GridPane>
     <Button text="Remember changes" id="rememberButton" onAction="#rememberChanges"/>

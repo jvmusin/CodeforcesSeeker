@@ -19,6 +19,7 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 import java.util.TimeZone;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -108,23 +109,6 @@ public class UserSeekerGridController implements Initializable {
         rememberChanges(null);
     }
 
-    private void updateHandleLabels(Object newValue) { updateChangedLabels(beforeHandleLabel, nowHandleLabel, newValue); }
-    private void updateEmailLabels(Object newValue) { updateChangedLabels(beforeEmailLabel, nowEmailLabel, newValue); }
-    private void updateVkIDLabels(Object newValue) { updateChangedLabels(beforeVkIDLabel, nowVkIDLabel, newValue); }
-    private void updateOpenIDLabels(Object newValue) { updateChangedLabels(beforeOpenIDLabel, nowOpenIDLabel, newValue); }
-    private void updateFirstNameLabels(Object newValue) { updateChangedLabels(beforeFirstNameLabel, nowFirstNameLabel, newValue); }
-    private void updateLastNameLabels(Object newValue) { updateChangedLabels(beforeLastNameLabel, nowLastNameLabel, newValue); }
-    private void updateCountryLabels(Object newValue) { updateChangedLabels(beforeCountryLabel, nowCountryLabel, newValue); }
-    private void updateCityLabels(Object newValue) { updateChangedLabels(beforeCityLabel, nowCityLabel, newValue); }
-    private void updateOrganizationLabels(Object newValue) { updateChangedLabels(beforeOrganizationLabel, nowOrganizationLabel, newValue); }
-    private void updateContributionLabels(Object newValue) { updateChangedLabels(beforeContributionLabel, nowContributionLabel, newValue); }
-    private void updateRankLabels(Object newValue) { updateChangedLabels(beforeRankLabel, nowRankLabel, newValue); }
-    private void updateMaxRankLabels(Object newValue) { updateChangedLabels(beforeMaxRankLabel, nowMaxRankLabel, newValue); }
-    private void updateRatingLabels(Object newValue) { updateChangedLabels(beforeRatingLabel, nowRatingLabel, newValue); }
-    private void updateMaxRatingLabels(Object newValue) { updateChangedLabels(beforeMaxRatingLabel, nowMaxRatingLabel, newValue); }
-    private void updateLastVisitLabels(Object newValue) { updateChangedLabels(beforeLastVisitLabel, nowLastVisitLabel, newValue); }
-    private void updateRegisteredLabels(Object newValue) { updateChangedLabels(beforeRegisteredLabel, nowRegisteredLabel, newValue); }
-
     public boolean updateUserIfPossible(User userNow) {
         boolean updated = false;
         Object val;
@@ -155,6 +139,23 @@ public class UserSeekerGridController implements Initializable {
         else return !o1.equals(o2);
     }
 
+    private void updateHandleLabels(Object newValue) { updateChangedLabels(beforeHandleLabel, nowHandleLabel, newValue); }
+    private void updateEmailLabels(Object newValue) { updateChangedLabels(beforeEmailLabel, nowEmailLabel, newValue); }
+    private void updateVkIDLabels(Object newValue) { updateChangedLabels(beforeVkIDLabel, nowVkIDLabel, newValue); }
+    private void updateOpenIDLabels(Object newValue) { updateChangedLabels(beforeOpenIDLabel, nowOpenIDLabel, newValue); }
+    private void updateFirstNameLabels(Object newValue) { updateChangedLabels(beforeFirstNameLabel, nowFirstNameLabel, newValue); }
+    private void updateLastNameLabels(Object newValue) { updateChangedLabels(beforeLastNameLabel, nowLastNameLabel, newValue); }
+    private void updateCountryLabels(Object newValue) { updateChangedLabels(beforeCountryLabel, nowCountryLabel, newValue); }
+    private void updateCityLabels(Object newValue) { updateChangedLabels(beforeCityLabel, nowCityLabel, newValue); }
+    private void updateOrganizationLabels(Object newValue) { updateChangedLabels(beforeOrganizationLabel, nowOrganizationLabel, newValue); }
+    private void updateContributionLabels(Object newValue) { updateChangedLabels(beforeContributionLabel, nowContributionLabel, newValue); }
+    private void updateRankLabels(Object newValue) { updateChangedLabels(beforeRankLabel, nowRankLabel, newValue); }
+    private void updateMaxRankLabels(Object newValue) { updateChangedLabels(beforeMaxRankLabel, nowMaxRankLabel, newValue); }
+    private void updateRatingLabels(Object newValue) { updateChangedLabels(beforeRatingLabel, nowRatingLabel, newValue); }
+    private void updateMaxRatingLabels(Object newValue) { updateChangedLabels(beforeMaxRatingLabel, nowMaxRatingLabel, newValue); }
+    private void updateLastVisitLabels(Object newValue) { updateChangedLabels(beforeLastVisitLabel, nowLastVisitLabel, newValue); }
+    private void updateRegisteredLabels(Object newValue) { updateChangedLabels(beforeRegisteredLabel, nowRegisteredLabel, newValue); }
+
     @FXML public void rememberChanges(ActionEvent event) {
         beforeHandleLabel.setText(nowHandleLabel.getText()); updateDefaultLabels(beforeHandleLabel, nowHandleLabel);
         beforeEmailLabel.setText(nowEmailLabel.getText()); updateDefaultLabels(beforeEmailLabel, nowEmailLabel);
@@ -174,65 +175,70 @@ public class UserSeekerGridController implements Initializable {
         beforeRegisteredLabel.setText(nowRegisteredLabel.getText()); updateDefaultLabels(beforeRegisteredLabel, nowRegisteredLabel);
     }
     private void updateDefaultLabels(Label labelBefore, Label labelNow) {
-        Paint newLabelColor = labelNow.getTextFill();
-        labelBefore.setTextFill(newLabelColor);
-        String defaultLabelStyle = "-fx-background-color: C4BA62";
-        labelBefore.setStyle(defaultLabelStyle);
-        labelNow.setStyle(defaultLabelStyle);
+        labelNow.getStyleClass().removeIf(s -> s.equals("changedNowLabel"));
+        labelBefore.getStyleClass().setAll(labelNow.getStyleClass());
     }
     private void updateChangedLabels(Label labelBefore, Label labelNow, Object newValue) {
-        labelBefore.setStyle("-fx-background-color: red;");
-        labelNow.setStyle("-fx-background-color: lawngreen;");
+        Runnable update = () -> {
 
-        if (newValue == null) {
-            labelNow.setText("");
-            return;
-        } else {
-            labelNow.setText(newValue.toString());
-        }
+            labelBefore.getStyleClass().removeIf(s -> s.equals("defaultBeforeAndNowLabel"));
+            labelNow.getStyleClass().removeIf(s -> s.equals("defaultBeforeAndNowLabel"));
 
-        if (labelNow == nowRatingLabel || labelNow == nowMaxRatingLabel) {
-            int rating = Integer.parseInt(newValue.toString());
-            Color ratingColor = getRatingColor(rating);
+            labelBefore.getStyleClass().add("changedBeforeLabel");
+            labelNow.getStyleClass().add("changedNowLabel");
 
-            if (labelNow == nowRatingLabel) {
-                nowRatingLabel.setTextFill(ratingColor);
-                nowRankLabel.setTextFill(ratingColor);
-            } else {    //  labelNow == nowMaxRatingLabel
-                nowMaxRatingLabel.setTextFill(ratingColor);
-                nowMaxRankLabel.setTextFill(ratingColor);
-            }
-
-            return;
-        }
-
-        if (labelNow == nowLastVisitLabel || labelNow == nowRegisteredLabel) {
-            Long time = Long.parseLong(newValue.toString());
-            ZoneOffset offset = OffsetDateTime.now().getOffset();
-            LocalDateTime ldt = LocalDateTime.ofEpochSecond(time, 0, offset);
-            ZonedDateTime zdt = ZonedDateTime.of(ldt, ZoneId.systemDefault());
-            String formattedTime = zdt.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG, FormatStyle.MEDIUM));
-
-            if (labelNow == nowLastVisitLabel) {
-                nowLastVisitLabel.setText(formattedTime);
+            if (newValue == null) {
+                labelNow.setText("");
+                return;
             } else {
-                nowRegisteredLabel.setText(formattedTime);
+                labelNow.setText(newValue.toString());
             }
-        }
 
-        labelNow.setTextFill(Color.web("#313131"));
+            if (labelNow == nowRatingLabel || labelNow == nowMaxRatingLabel) {
+                int rating = Integer.parseInt(newValue.toString());
+                String ratingColor = getRatingColor(rating);
+
+                if (labelNow == nowRatingLabel) {
+                    nowRatingLabel.getStyleClass().removeIf(s -> s.startsWith("rank"));
+                    nowRankLabel  .getStyleClass().removeIf(s -> s.startsWith("rank"));
+                    nowRatingLabel.getStyleClass().add(ratingColor);
+                    nowRankLabel  .getStyleClass().add(ratingColor);
+                } else {    //  labelNow == nowMaxRatingLabel
+                    nowMaxRatingLabel.getStyleClass().removeIf(s -> s.startsWith("rank"));
+                    nowMaxRankLabel  .getStyleClass().removeIf(s -> s.startsWith("rank"));
+                    nowMaxRatingLabel.getStyleClass().add(ratingColor);
+                    nowMaxRankLabel  .getStyleClass().add(ratingColor);
+                }
+            }
+
+            if (labelNow == nowLastVisitLabel || labelNow == nowRegisteredLabel) {
+                Long time = Long.parseLong(newValue.toString());
+                ZoneOffset offset = OffsetDateTime.now().getOffset();
+                LocalDateTime ldt = LocalDateTime.ofEpochSecond(time, 0, offset);
+                String formattedTime = ldt.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG, FormatStyle.MEDIUM));
+
+                if (labelNow == nowLastVisitLabel) {
+                    nowLastVisitLabel.setText(formattedTime);
+                } else {
+                    nowRegisteredLabel.setText(formattedTime);
+                }
+            }
+        };
+
+        if (Platform.isFxApplicationThread()) update.run();
+        else Platform.runLater(update);
     }
-    private Color getRatingColor(int rating) {
-        if (rating >= 2600) return Color.web("#F00");
-        else if (rating >= 2200) return Color.web("#F00");
-        else if (rating >= 2050) return Color.web("#FF8C00");
-        else if (rating >= 1900) return Color.web("#FF8C00");
-        else if (rating >= 1700) return Color.web("#A0A");
-        else if (rating >= 1500) return Color.web("#00F");
-        else if (rating >= 1350) return Color.web("#008000");
-        else if (rating >= 1200) return Color.web("#008000");
-        else if (rating >= 0) return Color.web("#008000");
-        else return Color.web("#FFFFFF");
+    private String getRatingColor(int rating) {
+        if (rating >= 2600) return "rankInternationalGrandmaster";
+        else if (rating >= 2200) return "rankGrandmaster";
+        else if (rating >= 2050) return "rankInternationalMaster";
+        else if (rating >= 1900) return "rankMaster";
+        else if (rating >= 1700) return "rankCandidateMaster";
+        else if (rating >= 1500) return "rankExpert";
+        else if (rating >= 1350) return "rankSpecialist";
+        else if (rating >= 1200) return "rankPupil";
+        else if (rating >= 0) return "rankNewbie";
+        else return "rankNobody";
     }
 
     public Pane getFullUserPane() {

@@ -32,6 +32,12 @@ public class UserSeekerLayoutController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         ServiceHolder.setUserSeekerLayoutController(this);
         new UserSeeker().startSeeking();
+
+        try {
+            seekingUsersTabPane.getTabs().add(new Tab("ex", FXMLLoader.load(getClass().getResource("/UserSeekerGrid.fxml"))));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

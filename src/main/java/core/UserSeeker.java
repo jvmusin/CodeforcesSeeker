@@ -4,17 +4,24 @@ import api.APIHolder;
 import base.CFResponse;
 import base.User;
 import controller.UserSeekerLayoutController;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Tab;
+import javafx.stage.Modality;
 
 import java.util.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executors;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.RunnableFuture;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public class UserSeeker {
-    private ObservableList<Tab> openedTabs;
-    private ObservableList<UserDataHolder> users;
+    private final long delay = 3000L;
+    private final ObservableList<Tab> openedTabs;
+    private final ObservableList<UserDataHolder> users;
 
     public UserSeeker() {
         UserSeekerLayoutController userSeekerLayoutController = ServiceHolder.getUserSeekerLayoutController();
@@ -29,20 +36,20 @@ public class UserSeeker {
     private void seek() {
         while (!Thread.currentThread().isInterrupted()) {
             try {
-                Thread.sleep(3000);
+                Thread.sleep(delay);
                 String handles = openedTabs.stream().map(Tab::getText).collect(Collectors.joining(";"));
                 if (handles.length() == 0) continue;
-                Logger.getGlobal().info("Seekeing users " + handles);
+                Logger.getGlobal().info("Seeking users " + handles);
 
                 CFResponse<List<User>> info = APIHolder.getUserAPI().getInfo(handles);
                 if (info.getExtendedStatus() == CFResponse.ExtendedStatus.SERVER_ERROR) {
-                    getServerErrorAlert().showAndWait();
+                    showServerErrorAlert();
                     continue;
                 }
 
-                StringJoiner changedUsers = new StringJoiner("\n");
+                List<String> updatedUsers = null;
 
-                info.getResult().forEach(userNow -> {
+                for (User userNow : info.getResult()) {
                     int pos = Collections.binarySearch(users, userNow);
                     if (pos < 0) return;
 
@@ -51,10 +58,14 @@ public class UserSeeker {
                     if (!userNow.equals(userBefore)) return;
 
                     boolean changed = userBeforeDataHolder.compareAndChangeLabels(userNow);
-                    if (changed) changedUsers.add(userNow.getHandle());
-                });
+                    if (changed) {
+                        if (updatedUsers == null) updatedUsers = new LinkedList<>();
+                        updatedUsers.add(userNow.getHandle());
+                    }
+                }
 
-                System.out.println("CHANGED USERS\n" + changedUsers);
+                if (updatedUsers != null)
+                    showUsersUpdatedAlert(updatedUsers);
             } catch (InterruptedException e) {
                 Logger.getGlobal().throwing(getClass().getName(), "seek()", e);
                 return;
@@ -62,7 +73,56 @@ public class UserSeeker {
         }
     }
 
-    private Alert getServerErrorAlert() {
-        return null;
+    private void showUsersUpdatedAlert(List<String> updatedUsers) {
+        try {
+            RunnableFuture<Void> work = new FutureTask<>(() -> {
+
+                Alert alert = prepareAlert(
+                        Alert.AlertType.INFORMATION,
+                        "Information",
+                        "Some users have been updated",
+                        "Updated users:\n\n" + String.join(",\n", updatedUsers)
+                );
+
+                alert.showAndWait();
+                return null;
+            });
+
+            Platform.runLater(work);
+            work.get();
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+    private void showServerErrorAlert() {
+        try {
+            RunnableFuture<Void> work = new FutureTask<>(() -> {
+
+                Alert alert = prepareAlert(
+                        Alert.AlertType.WARNING,
+                        "Information",
+                        "Server error",
+                        "Codeforces server doesn't work"
+                );
+
+                alert.showAndWait();
+                return null;
+            });
+
+            Platform.runLater(work);
+            work.get();
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private Alert prepareAlert(Alert.AlertType type, String title, String header, String contentText) {
+        Alert alert = new Alert(type);
+        alert.setContentText(contentText);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.initModality(Modality.APPLICATION_MODAL);
+        alert.setResizable(false);
+        return alert;
     }
 }

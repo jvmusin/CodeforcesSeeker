@@ -2,31 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df84f526-4672-4f9b-9756-891fc63a031e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/PloadyFree.xml" />
-      <change type="DELETED" beforePath="C:\Users\PloadyFree\Documents\GitHub\CodeforcesSeeker\src\main\java\core\Main.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="C:\Users\PloadyFree\Documents\GitHub\CodeforcesSeeker\target\classes\api\CFHandler.class" afterPath="C:\Users\PloadyFree\Documents\GitHub\CodeforcesSeeker\target\classes\api\CFHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/core/MainApp.class" afterPath="$PROJECT_DIR$/target/classes/core/MainApp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/core/UserDataHolder.class" afterPath="$PROJECT_DIR$/target/classes/core/UserDataHolder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/core/UserSeeker.class" afterPath="$PROJECT_DIR$/target/classes/core/UserSeeker.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/UserSeekerGridController.class" afterPath="$PROJECT_DIR$/target/classes/controller/UserSeekerGridController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/UserSeekerLayoutController$1.class" afterPath="$PROJECT_DIR$/target/classes/controller/UserSeekerLayoutController$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/UserSeekerLayoutController.class" afterPath="$PROJECT_DIR$/target/classes/controller/UserSeekerLayoutController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/api/CFHandler.java" afterPath="$PROJECT_DIR$/src/main/java/api/CFHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/core/MainApp.java" afterPath="$PROJECT_DIR$/src/main/java/core/MainApp.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/core/UserDataHolder.java" afterPath="$PROJECT_DIR$/src/main/java/core/UserDataHolder.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/core/UserSeeker.java" afterPath="$PROJECT_DIR$/src/main/java/core/UserSeeker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/UserSeekerGrid.fxml" afterPath="$PROJECT_DIR$/src/main/resources/UserSeekerGrid.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/UserSeekerGrid.fxml" afterPath="$PROJECT_DIR$/target/classes/UserSeekerGrid.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/UserSeekerGridController.java" afterPath="$PROJECT_DIR$/src/main/java/controller/UserSeekerGridController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/UserSeekerLayout.fxml" afterPath="$PROJECT_DIR$/src/main/resources/UserSeekerLayout.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/UserSeekerLayout.fxml" afterPath="$PROJECT_DIR$/target/classes/UserSeekerLayout.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/UserSeekerLayoutController.java" afterPath="$PROJECT_DIR$/src/main/java/controller/UserSeekerLayoutController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/css/user-grid-side.css" afterPath="$PROJECT_DIR$/src/main/resources/css/user-grid-side.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/css/user-grid-side.css" afterPath="$PROJECT_DIR$/target/classes/css/user-grid-side.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/css/user-list-side.css" afterPath="$PROJECT_DIR$/src/main/resources/css/user-list-side.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/css/user-list-side.css" afterPath="$PROJECT_DIR$/target/classes/css/user-list-side.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="CodeforcesSeeker.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -54,7 +31,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/UserSeekerLayoutController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="44" column="62" selection-start-line="44" selection-start-column="62" selection-end-line="44" selection-end-column="62" />
+              <caret line="46" column="111" selection-start-line="46" selection-start-column="111" selection-end-line="46" selection-end-column="111" />
               <folding>
                 <element signature="method#handleFind#0;class#UserSeekerLayoutController#0" expanded="false" />
               </folding>
@@ -66,12 +43,11 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/UserSeekerGridController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="232" column="0" selection-start-line="232" selection-start-column="0" selection-end-line="232" selection-end-column="0" />
+              <caret line="101" column="19" selection-start-line="101" selection-start-column="19" selection-end-line="101" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#initialize#0;class#UserSeekerGridController#0" expanded="false" />
                 <element signature="method#setUser#0;class#UserSeekerGridController#0" expanded="false" />
-                <element signature="method#tryUpdateUser#0;class#UserSeekerGridController#0" expanded="false" />
                 <element signature="method#isValueChanged#0;class#UserSeekerGridController#0" expanded="false" />
                 <element signature="method#rememberChanges#0;class#UserSeekerGridController#0" expanded="false" />
                 <element signature="method#resetLabelToDefault#0;class#UserSeekerGridController#0" expanded="false" />
@@ -133,16 +109,16 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/core/UserSeeker.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+              <caret line="66" column="82" selection-start-line="66" selection-start-column="82" selection-end-line="66" selection-end-column="82" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CFHandler.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CFHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/api/CFHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.59429824">
+            <state vertical-scroll-proportion="0.0">
               <caret line="123" column="64" selection-start-line="123" selection-start-column="64" selection-end-line="123" selection-end-column="64" />
               <folding>
                 <element signature="method#generateQuery#0;class#CFHandler#0" expanded="false" />
@@ -162,6 +138,21 @@
               <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
               <folding>
                 <element signature="e#701#702#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserDataHolder.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/core/UserDataHolder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.43201753">
+              <caret line="27" column="45" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="45" />
+              <folding>
+                <element signature="e#986#987#0" expanded="true" />
+                <element signature="e#1046#1047#0" expanded="true" />
+                <element signature="e#1105#1106#0" expanded="true" />
+                <element signature="e#1170#1171#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -230,12 +221,12 @@
         <option value="$PROJECT_DIR$/src/main/java/controller/UserSeekerLayoutController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/UserSeekerGrid.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/core/MainApp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/core/UserDataHolder.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/UserSeekerGridController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/css/user-grid-side.css" />
-        <option value="$PROJECT_DIR$/src/main/java/core/UserSeeker.java" />
         <option value="$PROJECT_DIR$/src/main/resources/css/user-list-side.css" />
         <option value="$PROJECT_DIR$/src/main/java/api/CFHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/core/UserSeeker.java" />
+        <option value="$PROJECT_DIR$/src/main/java/core/UserDataHolder.java" />
       </list>
     </option>
   </component>
@@ -894,12 +885,12 @@
       <workItem from="1439294200962" duration="1029000" />
       <workItem from="1439295250865" duration="9109000" />
       <workItem from="1439322278048" duration="8013000" />
-      <workItem from="1439368140842" duration="22862000" />
+      <workItem from="1439368140842" duration="23834000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="126902000" />
+    <option name="totallyTimeSpent" value="127874000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -1020,8 +1011,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
           <folding>
-            <element signature="e#1179#1180#0" expanded="true" />
-            <element signature="e#1239#1240#0" expanded="true" />
+            <element signature="e#986#987#0" expanded="true" />
+            <element signature="e#1046#1047#0" expanded="true" />
+            <element signature="e#1105#1106#0" expanded="true" />
+            <element signature="e#1170#1171#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1034,7 +1027,6 @@
             <element signature="imports" expanded="true" />
             <element signature="method#initialize#0;class#UserSeekerGridController#0" expanded="false" />
             <element signature="method#setUser#0;class#UserSeekerGridController#0" expanded="false" />
-            <element signature="method#tryUpdateUser#0;class#UserSeekerGridController#0" expanded="false" />
             <element signature="method#isValueChanged#0;class#UserSeekerGridController#0" expanded="false" />
             <element signature="method#rememberChanges#0;class#UserSeekerGridController#0" expanded="false" />
             <element signature="method#resetLabelToDefault#0;class#UserSeekerGridController#0" expanded="false" />
@@ -1080,8 +1072,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
           <folding>
-            <element signature="e#1179#1180#0" expanded="true" />
-            <element signature="e#1239#1240#0" expanded="true" />
+            <element signature="e#986#987#0" expanded="true" />
+            <element signature="e#1046#1047#0" expanded="true" />
+            <element signature="e#1105#1106#0" expanded="true" />
+            <element signature="e#1170#1171#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1346,27 +1340,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/core/UserDataHolder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36622807">
-          <caret line="53" column="58" selection-start-line="53" selection-start-column="58" selection-end-line="53" selection-end-column="58" />
-          <folding>
-            <element signature="e#1179#1180#0" expanded="true" />
-            <element signature="e#1239#1240#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/UserSeekerLayoutController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="62" selection-start-line="44" selection-start-column="62" selection-end-line="44" selection-end-column="62" />
-          <folding>
-            <element signature="method#handleFind#0;class#UserSeekerLayoutController#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/UserSeekerGrid.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
@@ -1421,15 +1394,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/api/APIHolder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding>
+            <element signature="e#701#702#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/api/CFHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="123" column="64" selection-start-line="123" selection-start-column="64" selection-end-line="123" selection-end-column="64" />
+          <folding>
+            <element signature="method#generateQuery#0;class#CFHandler#0" expanded="false" />
+            <element signature="method#hasOnlyConfigParams#0;class#CFHandler#0" expanded="false" />
+            <element signature="method#getQueryParams#0;class#CFHandler#0" expanded="false" />
+            <element signature="method#getQueryParamsWithApiSig#0;class#CFHandler#0" expanded="false" />
+            <element signature="method#getQueryParamsStandard#0;class#CFHandler#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/UserSeekerLayoutController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="46" column="111" selection-start-line="46" selection-start-column="111" selection-end-line="46" selection-end-column="111" />
+          <folding>
+            <element signature="method#handleFind#0;class#UserSeekerLayoutController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/core/UserSeeker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="66" column="82" selection-start-line="66" selection-start-column="82" selection-end-line="66" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/UserSeekerGridController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="232" column="0" selection-start-line="232" selection-start-column="0" selection-end-line="232" selection-end-column="0" />
+          <caret line="101" column="19" selection-start-line="101" selection-start-column="19" selection-end-line="101" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#initialize#0;class#UserSeekerGridController#0" expanded="false" />
             <element signature="method#setUser#0;class#UserSeekerGridController#0" expanded="false" />
-            <element signature="method#tryUpdateUser#0;class#UserSeekerGridController#0" expanded="false" />
             <element signature="method#isValueChanged#0;class#UserSeekerGridController#0" expanded="false" />
             <element signature="method#rememberChanges#0;class#UserSeekerGridController#0" expanded="false" />
             <element signature="method#resetLabelToDefault#0;class#UserSeekerGridController#0" expanded="false" />
@@ -1442,34 +1456,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/api/APIHolder.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/core/UserDataHolder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.43201753">
+          <caret line="27" column="45" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="45" />
           <folding>
-            <element signature="e#701#702#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/core/UserSeeker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/api/CFHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.59429824">
-          <caret line="123" column="64" selection-start-line="123" selection-start-column="64" selection-end-line="123" selection-end-column="64" />
-          <folding>
-            <element signature="method#generateQuery#0;class#CFHandler#0" expanded="false" />
-            <element signature="method#hasOnlyConfigParams#0;class#CFHandler#0" expanded="false" />
-            <element signature="method#getQueryParams#0;class#CFHandler#0" expanded="false" />
-            <element signature="method#getQueryParamsWithApiSig#0;class#CFHandler#0" expanded="false" />
-            <element signature="method#getQueryParamsStandard#0;class#CFHandler#0" expanded="false" />
+            <element signature="e#986#987#0" expanded="true" />
+            <element signature="e#1046#1047#0" expanded="true" />
+            <element signature="e#1105#1106#0" expanded="true" />
+            <element signature="e#1170#1171#0" expanded="true" />
           </folding>
         </state>
       </provider>

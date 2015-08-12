@@ -63,7 +63,11 @@ public class UserSeeker {
                     User userBefore = userBeforeDataHolder.getUser();
                     if (!userNow.equals(userBefore)) continue;
 
-                    boolean changed = userBeforeDataHolder.compareAndChangeLabels(userNow);
+                    RunnableFuture<Boolean> comparingAndChangingLabels =
+                            new FutureTask<>(() -> userBeforeDataHolder.compareAndChangeLabels(userNow));
+
+                    Platform.runLater(comparingAndChangingLabels);
+                    boolean changed = comparingAndChangingLabels.get();
                     if (changed) {
                         if (updatedUsers == null) updatedUsers = new LinkedList<>();
                         updatedUsers.add(userNow.getHandle());
@@ -72,9 +76,9 @@ public class UserSeeker {
 
                 if (updatedUsers != null)
                     showUsersUpdatedAlert(updatedUsers);
-            } catch (InterruptedException e) {
-                Logger.getGlobal().throwing(getClass().getName(), "seek()", e);
-                Platform.exit();
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+                ServiceHolder.getMainApp().closeApplication();
                 return;
             } catch (ConcurrentModificationException ignored) {}
         }

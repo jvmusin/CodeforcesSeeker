@@ -2,25 +2,22 @@ package api;
 
 import api.annotations.GET;
 import api.annotations.Query;
-import api.interfaces.ContestAPI;
 import base.Account;
 import base.CFResponse;
 import com.google.gson.Gson;
+import core.ServiceHolder;
 import javafx.util.Pair;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.RandomUtils;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.*;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
+import java.util.concurrent.*;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -91,7 +88,6 @@ public class CFHandler implements InvocationHandler {
         if (lang != null) params.add(new Pair<>("lang", lang));
         return includeApiSig ? getQueryParamsWithApiSig(methodName, params) : getQueryParamsStandard(params);
     }
-
     private String getQueryParamsWithApiSig(String methodName, List<Pair<String, String>> params) {
         Account account = Account.getInstance();
         String apiKey = account.getApiKey();
@@ -111,30 +107,32 @@ public class CFHandler implements InvocationHandler {
         params.add(new Pair<>("apiSig", apiSig));
         return params.stream().map(p -> p.getKey() + "=" + p.getValue()).collect(Collectors.joining("&")) + "#" + sha512Hex;
     }
-
     private String getQueryParamsStandard(List<Pair<String, String>> params) {
         return params.stream().map(p -> p.getKey() + "=" + p.getValue()).collect(Collectors.joining("&"));
     }
 
     private String sendQuery(String query) {
         try {
-            URL url = new URL(query);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
-            BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
-            String json = br.readLine();
-            return json;
-        } catch (IOException e) {
+            RunnableFuture<String> sender = new FutureTask<>(() -> {
+                URL url = new URL(query);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+                BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
+                String json = br.readLine();
+                return json;
+            });
+            ServiceHolder.getMainApp().getPool().submit(sender);
+            return sender.get(2, TimeUnit.SECONDS);
+        } catch (InterruptedException | TimeoutException | ExecutionException e) {
             return getFailedCFResponseJson(e);
         }
     }
 
     private static String getFailedCFResponseJson(Exception e) {
         String message = e.getMessage();
-        CFResponse.ExtendedStatus extendedStatus =
-                message.startsWith("Server returned HTTP response code: 400")
-                        ? CFResponse.ExtendedStatus.USER_NOT_FOUND
-                        : CFResponse.ExtendedStatus.SERVER_ERROR;
+        CFResponse.ExtendedStatus extendedStatus = CFResponse.ExtendedStatus.SERVER_ERROR;
+        if (message != null && message.startsWith("java.io.IOException: Server returned HTTP response code: 400"))
+            extendedStatus = CFResponse.ExtendedStatus.USER_NOT_FOUND;
         CFResponse response = CFResponse.getFailedCFResponse(message, extendedStatus);
         return new Gson().toJson(response);
     }

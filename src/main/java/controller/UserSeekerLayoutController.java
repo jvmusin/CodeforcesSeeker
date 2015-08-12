@@ -3,7 +3,6 @@ package controller;
 import api.APIHolder;
 import base.CFResponse;
 import base.User;
-import core.MainApp;
 import core.ServiceHolder;
 import core.UserDataHolder;
 import core.UserSeeker;
@@ -18,11 +17,13 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.*;
-import java.util.concurrent.ForkJoinPool;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.ResourceBundle;
 
 public class UserSeekerLayoutController implements Initializable {
-    @FXML private VBox fullSide;
+    @FXML private VBox fullListSide;
     @FXML private TabPane seekingUsersTabPane;
     @FXML private ListView<UserDataHolder> foundUsersListView;
     @FXML private TextField userFinderHandleField;
@@ -43,7 +44,7 @@ public class UserSeekerLayoutController implements Initializable {
     @FXML
     public void startSeekingSelectedUsers(ActionEvent event) {
         foundUsersListView.getSelectionModel().getSelectedItems().forEach(userDataHolder ->
-                seekingUsersTabPane.getTabs().add(new Tab(userDataHolder.getUser().getHandle(), userDataHolder.getFullUserPane())));
+                seekingUsersTabPane.getTabs().add(new Tab(userDataHolder.getUser().getHandle(), userDataHolder.getFullUserSide())));
     }
 
     @FXML

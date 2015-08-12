@@ -1,6 +1,7 @@
 package core;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
@@ -30,6 +31,11 @@ public class MainApp extends Application {
 
     public ExecutorService getPool() {
         return pool;
+    }
+
+    public void closeApplication() {
+        pool.shutdownNow();
+        Platform.exit();
     }
 
     public static void main(String[] args) {

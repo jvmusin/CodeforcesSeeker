@@ -10,16 +10,18 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Tab;
 import javafx.stage.Modality;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.ConcurrentModificationException;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.RunnableFuture;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public class UserSeeker {
-    private final long delay = 3000L;
+    private final long DELAY = 3000L;
     private final ObservableList<Tab> openedTabs;
     private final ObservableList<UserDataHolder> users;
 
@@ -36,26 +38,30 @@ public class UserSeeker {
     private void seek() {
         while (!Thread.currentThread().isInterrupted()) {
             try {
-                Thread.sleep(delay);
+                Thread.sleep(DELAY);
                 String handles = openedTabs.stream().map(Tab::getText).collect(Collectors.joining(";"));
                 if (handles.length() == 0) continue;
                 Logger.getGlobal().info("Seeking users " + handles);
 
                 CFResponse<List<User>> info = APIHolder.getUserAPI().getInfo(handles);
-                if (info.getExtendedStatus() == CFResponse.ExtendedStatus.SERVER_ERROR) {
-                    showServerErrorAlert();
-                    continue;
+                if (info.getStatus() == CFResponse.Status.FAILED) {
+                    switch (info.getExtendedStatus()) {
+                        case SERVER_ERROR:
+                            showServerErrorAlert();
+                        case USER_NOT_FOUND:    //  Test user is on the pane
+                            continue;
+                    }
                 }
 
                 List<String> updatedUsers = null;
 
                 for (User userNow : info.getResult()) {
                     int pos = Collections.binarySearch(users, userNow);
-                    if (pos < 0) return;
+                    if (pos < 0) continue;
 
                     UserDataHolder userBeforeDataHolder = users.get(pos);
                     User userBefore = userBeforeDataHolder.getUser();
-                    if (!userNow.equals(userBefore)) return;
+                    if (!userNow.equals(userBefore)) continue;
 
                     boolean changed = userBeforeDataHolder.compareAndChangeLabels(userNow);
                     if (changed) {
@@ -68,6 +74,7 @@ public class UserSeeker {
                     showUsersUpdatedAlert(updatedUsers);
             } catch (InterruptedException e) {
                 Logger.getGlobal().throwing(getClass().getName(), "seek()", e);
+                Platform.exit();
                 return;
             } catch (ConcurrentModificationException ignored) {}
         }

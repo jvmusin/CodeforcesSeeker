@@ -1,4 +1,4 @@
-#fullUserPane {
+#fullUserSide {
     -fx-spacing: 0.5em;
     -fx-alignment: center-right;
 }
@@ -7,70 +7,67 @@
     -fx-grid-lines-visible: true;
 }
 
+#rememberButton {
+    -fx-font-size: 1.3em;
+}
+
 .label {
     -fx-pref-width: 2000em;
     -fx-pref-height: 2000em;
     -fx-min-height: 1.3em;
-    -fx-alignment: center;
     -fx-font-size: 1.3em;
+    -fx-alignment: center;
     -fx-font-weight: bold;
     -fx-text-fill: #404040;
-    -fx-background-color: C4BA62;
+    -fx-background-color: #C4BA62;
+    -fx-font-family: sans-serif;
 }
 
-.titleLabel {
+.title-label {
     -fx-background-color: khaki;
     -fx-text-fill: cadetblue;
 }
 
-.changedBeforeLabel {
-    -fx-background-color: black;
+.user-data-cell {
+    -fx-alignment: center;
+    -fx-background-color: #C4BA62;
+    -fx-font-size: 1.5em;
+    -fx-min-height: 1.3em;
+    -fx-min-width: 1em;
+    -fx-spacing: 1em;
 }
 
-.changedNowLabel {
-    -fx-background-color: lawngreen;
-}
-
-#rememberButton {
-    -fx-font-size: 1.3em;
+.user-data-updated-cell {
+    -fx-background-color: chartreuse;
 }
 
 .rankInternationalGrandmaster {
     -fx-text-fill: #F00;
 }
-
 .rankGrandmaster {
     -fx-text-fill: #F00;
 }
-
 .rankInternationalMaster {
     -fx-text-fill: #FF8C00;
 }
-
 .rankMaster {
     -fx-text-fill: #FF8C00;
 }
-
 .rankCandidateMaster {
     -fx-text-fill: #A0A;
 }
-
 .rankExpert {
     -fx-text-fill: #00F;
 }
-
 .rankSpecialist {
     -fx-text-fill: #008000;
 }
-
 .rankPupil {
     -fx-text-fill: #008000;
 }
-
 .rankNewbie {
     -fx-text-fill: #7f7f7f;
 }
-
 .rankNobody {
     -fx-text-fill: #F00;
 }

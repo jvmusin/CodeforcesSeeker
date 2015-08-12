@@ -1,134 +1,130 @@
 package controller;
 
 import base.User;
-import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
+import org.apache.commons.lang3.tuple.MutablePair;
 
 import java.net.URL;
-import java.time.*;
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
-import java.util.Scanner;
-import java.util.TimeZone;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 public class UserSeekerGridController implements Initializable {
-    @FXML private Pane fullUserPane;
+    @FXML private Pane fullUserSide;
 
-    @FXML private Label defaultBeforeLabel;
-    @FXML private Label defaultNowLabel;
+//    @FXML private Label titleUserDataLabel;
+//
+//    @FXML private Label titleHandleLabel;
+//    @FXML private Label titleEmailLabel;
+//    @FXML private Label titleVkIDLabel;
+//    @FXML private Label titleOpenIDLabel;
+//    @FXML private Label titleFirstNameLabel;
+//    @FXML private Label titleLastNameLabel;
+//    @FXML private Label titleCountryLabel;
+//    @FXML private Label titleCityLabel;
+//    @FXML private Label titleOrganizationLabel;
+//    @FXML private Label titleContributionLabel;
+//    @FXML private Label titleRankLabel;
+//    @FXML private Label titleMaxRankLabel;
+//    @FXML private Label titleRatingLabel;
+//    @FXML private Label titleMaxRatingLabel;
+//    @FXML private Label titleLastVisitLabel;
+//    @FXML private Label titleRegisteredLabel;
 
-    @FXML private Label defaultHandleLabel;
-    @FXML private Label defaultEmailLabel;
-    @FXML private Label defaultVkIDLabel;
-    @FXML private Label defaultOpenIDLabel;
-    @FXML private Label defaultFirstNameLabel;
-    @FXML private Label defaultLastNameLabel;
-    @FXML private Label defaultCountryLabel;
-    @FXML private Label defaultCityLabel;
-    @FXML private Label defaultOrganizationLabel;
-    @FXML private Label defaultContributionLabel;
-    @FXML private Label defaultRankLabel;
-    @FXML private Label defaultMaxRankLabel;
-    @FXML private Label defaultRatingLabel;
-    @FXML private Label defaultMaxRatingLabel;
-    @FXML private Label defaultLastVisitLabel;
-    @FXML private Label defaultRegisteredLabel;
-
-    @FXML private Label beforeHandleLabel;
-    @FXML private Label beforeEmailLabel;
-    @FXML private Label beforeVkIDLabel;
-    @FXML private Label beforeOpenIDLabel;
-    @FXML private Label beforeFirstNameLabel;
-    @FXML private Label beforeLastNameLabel;
-    @FXML private Label beforeCountryLabel;
-    @FXML private Label beforeCityLabel;
-    @FXML private Label beforeOrganizationLabel;
-    @FXML private Label beforeContributionLabel;
-    @FXML private Label beforeRankLabel;
-    @FXML private Label beforeMaxRankLabel;
-    @FXML private Label beforeRatingLabel;
-    @FXML private Label beforeMaxRatingLabel;
-    @FXML private Label beforeLastVisitLabel;
-    @FXML private Label beforeRegisteredLabel;
-
-    @FXML private Label nowHandleLabel;
-    @FXML private Label nowEmailLabel;
-    @FXML private Label nowVkIDLabel;
-    @FXML private Label nowOpenIDLabel;
-    @FXML private Label nowFirstNameLabel;
-    @FXML private Label nowLastNameLabel;
-    @FXML private Label nowCountryLabel;
-    @FXML private Label nowCityLabel;
-    @FXML private Label nowOrganizationLabel;
-    @FXML private Label nowContributionLabel;
-    @FXML private Label nowRankLabel;
-    @FXML private Label nowMaxRankLabel;
-    @FXML private Label nowRatingLabel;
-    @FXML private Label nowMaxRatingLabel;
-    @FXML private Label nowLastVisitLabel;
-    @FXML private Label nowRegisteredLabel;
+    @FXML private Label userHandleLabel;
+    @FXML private Label userEmailLabel;
+    @FXML private Label userVkIDLabel;
+    @FXML private Label userOpenIDLabel;
+    @FXML private Label userFirstNameLabel;
+    @FXML private Label userLastNameLabel;
+    @FXML private Label userCountryLabel;
+    @FXML private Label userCityLabel;
+    @FXML private Label userOrganizationLabel;
+    @FXML private Label userContributionLabel;
+    @FXML private HBox userRatingAndRankPane;
+    @FXML private HBox userMaxRatingAndMaxRankPane;
+    @FXML private Label userLastVisitLabel;
+    @FXML private Label userRegisteredLabel;
 
     private User user;
+    private Map<Label, MutablePair<String, String>> labelValues;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {}
+    public void initialize(URL location, ResourceBundle resources) {
+        labelValues = new HashMap<>();
+
+        labelValues.put(userHandleLabel, new MutablePair<>());
+        labelValues.put(userEmailLabel, new MutablePair<>());
+        labelValues.put(userVkIDLabel, new MutablePair<>());
+        labelValues.put(userOpenIDLabel, new MutablePair<>());
+        labelValues.put(userFirstNameLabel, new MutablePair<>());
+        labelValues.put(userLastNameLabel, new MutablePair<>());
+        labelValues.put(userCountryLabel, new MutablePair<>());
+        labelValues.put(userCityLabel, new MutablePair<>());
+        labelValues.put(userOrganizationLabel, new MutablePair<>());
+        labelValues.put(userContributionLabel, new MutablePair<>());
+        labelValues.put(userLastVisitLabel, new MutablePair<>());
+        labelValues.put(userRegisteredLabel, new MutablePair<>());
+    }
 
     public void setUser(User user) {
         this.user = user;
 
-        updateChangedLabels(beforeHandleLabel, nowHandleLabel, user.getHandle());
-        updateChangedLabels(beforeEmailLabel, nowEmailLabel, user.getEmail());
-        updateChangedLabels(beforeVkIDLabel, nowVkIDLabel, user.getVkId());
-        updateChangedLabels(beforeOpenIDLabel, nowOpenIDLabel, user.getOpenId());
-        updateChangedLabels(beforeFirstNameLabel, nowFirstNameLabel, user.getFirstName());
-        updateChangedLabels(beforeLastNameLabel, nowLastNameLabel, user.getLastName());
-        updateChangedLabels(beforeCountryLabel, nowCountryLabel, user.getCountry());
-        updateChangedLabels(beforeCityLabel, nowCityLabel, user.getCity());
-        updateChangedLabels(beforeOrganizationLabel, nowOrganizationLabel, user.getOrganization());
-        updateChangedLabels(beforeContributionLabel, nowContributionLabel, user.getContribution());
-        updateChangedLabels(beforeRankLabel, nowRankLabel, user.getRank());
-        updateChangedLabels(beforeMaxRankLabel, nowMaxRankLabel, user.getMaxRank());
-        updateChangedLabels(beforeRatingLabel, nowRatingLabel, user.getRating());
-        updateChangedLabels(beforeMaxRatingLabel, nowMaxRatingLabel, user.getMaxRating());
-        updateChangedLabels(beforeLastVisitLabel, nowLastVisitLabel, user.getLastOnlineTimeSeconds());
-        updateChangedLabels(beforeRegisteredLabel, nowRegisteredLabel, user.getRegistrationTimeSeconds());
+        updateLabelValue(userHandleLabel, user.getHandle());
+        updateLabelValue(userEmailLabel, user.getEmail());
+        updateLabelValue(userVkIDLabel, user.getVkId());
+        updateLabelValue(userOpenIDLabel, user.getOpenId());
+        updateLabelValue(userFirstNameLabel, user.getFirstName());
+        updateLabelValue(userLastNameLabel, user.getLastName());
+        updateLabelValue(userCountryLabel, user.getCountry());
+        updateLabelValue(userCityLabel, user.getCity());
+        updateLabelValue(userOrganizationLabel, user.getOrganization());
+        updateLabelValue(userContributionLabel, user.getContribution());
+        updateLabelValue(userLastVisitLabel, user.getLastOnlineTimeSeconds());
+        updateLabelValue(userRegisteredLabel, user.getRegistrationTimeSeconds());
 
-        rememberChanges(null);
+        updateRatingAndRankValue(userRatingAndRankPane, user.getRating(), user.getRank());
+        updateRatingAndRankValue(userMaxRatingAndMaxRankPane, user.getMaxRating(), user.getMaxRank());
     }
 
-    public boolean updateUserIfPossible(User userNow) {
+    public boolean tryUpdateUser(User userNow) {
         boolean updated = false;
         Object val;
 
-        if (isValueChanged(user.getHandle(), val = userNow.getHandle())) { updated = true; updateHandleLabels(val); }
-        if (isValueChanged(user.getEmail(), val = userNow.getEmail())) { updated = true; updateEmailLabels(val); }
-        if (isValueChanged(user.getVkId(), val = userNow.getVkId())) { updated = true; updateVkIDLabels(val); }
-        if (isValueChanged(user.getOpenId(), val = userNow.getOpenId())) { updated = true; updateOpenIDLabels(val); }
-        if (isValueChanged(user.getFirstName(), val = userNow.getFirstName())) { updated = true; updateFirstNameLabels(val); }
-        if (isValueChanged(user.getLastName(), val = userNow.getLastName())) { updated = true; updateLastNameLabels(val); }
-        if (isValueChanged(user.getCountry(), val = userNow.getCountry())) { updated = true; updateCountryLabels(val); }
-        if (isValueChanged(user.getCity(), val = userNow.getCity())) { updated = true; updateCityLabels(val); }
-        if (isValueChanged(user.getOrganization(), val = userNow.getOrganization())) { updated = true; updateOrganizationLabels(val); }
-        if (isValueChanged(user.getContribution(), val = userNow.getContribution())) { updated = true; updateContributionLabels(val); }
-        if (isValueChanged(user.getRank(), val = userNow.getRank())) { updated = true; updateRankLabels(val); }
-        if (isValueChanged(user.getMaxRank(), val = userNow.getMaxRank())) { updated = true; updateMaxRankLabels(val); }
-        if (isValueChanged(user.getRating(), val = userNow.getRating())) { updated = true; updateRatingLabels(val); }
-        if (isValueChanged(user.getMaxRating(), val = userNow.getMaxRating())) { updated = true; updateMaxRatingLabels(val); }
-        if (isValueChanged(user.getLastOnlineTimeSeconds(), val = userNow.getLastOnlineTimeSeconds())) { updated = true; updateLastVisitLabels(val); }
-        if (isValueChanged(user.getRegistrationTimeSeconds(), val = userNow.getRegistrationTimeSeconds())) { updated = true; updateRegisteredLabels(val); }
+        if (isValueChanged(user.getHandle(), val = userNow.getHandle())) { updated = true; updateHandleLabel(val); }
+        if (isValueChanged(user.getEmail(), val = userNow.getEmail())) { updated = true; updateEmailLabel(val); }
+        if (isValueChanged(user.getVkId(), val = userNow.getVkId())) { updated = true; updateVkIDLabel(val); }
+        if (isValueChanged(user.getOpenId(), val = userNow.getOpenId())) { updated = true; updateOpenIDLabel(val); }
+        if (isValueChanged(user.getFirstName(), val = userNow.getFirstName())) { updated = true; updateFirstNameLabel(val); }
+        if (isValueChanged(user.getLastName(), val = userNow.getLastName())) { updated = true; updateLastNameLabel(val); }
+        if (isValueChanged(user.getCountry(), val = userNow.getCountry())) { updated = true; updateCountryLabel(val); }
+        if (isValueChanged(user.getCity(), val = userNow.getCity())) { updated = true; updateCityLabel(val); }
+        if (isValueChanged(user.getOrganization(), val = userNow.getOrganization())) { updated = true; updateOrganizationLabel(val); }
+        if (isValueChanged(user.getContribution(), val = userNow.getContribution())) { updated = true; updateContributionLabel(val); }
+        if (isValueChanged(user.getLastOnlineTimeSeconds(), val = userNow.getLastOnlineTimeSeconds())) { updated = true; updateLastVisitLabel(val); }
+        if (isValueChanged(user.getRegistrationTimeSeconds(), val = userNow.getRegistrationTimeSeconds())) { updated = true; updateRegisteredLabel(val); }
+
+        Integer newRating;
+        if (isValueChanged(user.getRating(), newRating = userNow.getRating())) {
+            updated = true;
+            updateRatingAndRankValue(userRatingAndRankPane, newRating, userNow.getRank());
+        }
+        if (isValueChanged(user.getMaxRating(), newRating = userNow.getMaxRating())) {
+            updated = true;
+            updateRatingAndRankValue(userMaxRatingAndMaxRankPane, newRating, userNow.getMaxRank());
+        }
 
         if (updated) user.cloneFieldsFrom(userNow);
         return updated;
@@ -139,96 +135,129 @@ public class UserSeekerGridController implements Initializable {
         else return !o1.equals(o2);
     }
 
-    private void updateHandleLabels(Object newValue) { updateChangedLabels(beforeHandleLabel, nowHandleLabel, newValue); }
-    private void updateEmailLabels(Object newValue) { updateChangedLabels(beforeEmailLabel, nowEmailLabel, newValue); }
-    private void updateVkIDLabels(Object newValue) { updateChangedLabels(beforeVkIDLabel, nowVkIDLabel, newValue); }
-    private void updateOpenIDLabels(Object newValue) { updateChangedLabels(beforeOpenIDLabel, nowOpenIDLabel, newValue); }
-    private void updateFirstNameLabels(Object newValue) { updateChangedLabels(beforeFirstNameLabel, nowFirstNameLabel, newValue); }
-    private void updateLastNameLabels(Object newValue) { updateChangedLabels(beforeLastNameLabel, nowLastNameLabel, newValue); }
-    private void updateCountryLabels(Object newValue) { updateChangedLabels(beforeCountryLabel, nowCountryLabel, newValue); }
-    private void updateCityLabels(Object newValue) { updateChangedLabels(beforeCityLabel, nowCityLabel, newValue); }
-    private void updateOrganizationLabels(Object newValue) { updateChangedLabels(beforeOrganizationLabel, nowOrganizationLabel, newValue); }
-    private void updateContributionLabels(Object newValue) { updateChangedLabels(beforeContributionLabel, nowContributionLabel, newValue); }
-    private void updateRankLabels(Object newValue) { updateChangedLabels(beforeRankLabel, nowRankLabel, newValue); }
-    private void updateMaxRankLabels(Object newValue) { updateChangedLabels(beforeMaxRankLabel, nowMaxRankLabel, newValue); }
-    private void updateRatingLabels(Object newValue) { updateChangedLabels(beforeRatingLabel, nowRatingLabel, newValue); }
-    private void updateMaxRatingLabels(Object newValue) { updateChangedLabels(beforeMaxRatingLabel, nowMaxRatingLabel, newValue); }
-    private void updateLastVisitLabels(Object newValue) { updateChangedLabels(beforeLastVisitLabel, nowLastVisitLabel, newValue); }
-    private void updateRegisteredLabels(Object newValue) { updateChangedLabels(beforeRegisteredLabel, nowRegisteredLabel, newValue); }
+    private void updateHandleLabel(Object newValue) { updateLabelValue(userHandleLabel, newValue); }
+    private void updateEmailLabel(Object newValue) { updateLabelValue(userEmailLabel, newValue); }
+    private void updateVkIDLabel(Object newValue) { updateLabelValue(userVkIDLabel, newValue); }
+    private void updateOpenIDLabel(Object newValue) { updateLabelValue(userOpenIDLabel, newValue); }
+    private void updateFirstNameLabel(Object newValue) { updateLabelValue(userFirstNameLabel, newValue); }
+    private void updateLastNameLabel(Object newValue) { updateLabelValue(userLastNameLabel, newValue); }
+    private void updateCountryLabel(Object newValue) { updateLabelValue(userCountryLabel, newValue); }
+    private void updateCityLabel(Object newValue) { updateLabelValue(userCityLabel, newValue); }
+    private void updateOrganizationLabel(Object newValue) { updateLabelValue(userOrganizationLabel, newValue); }
+    private void updateContributionLabel(Object newValue) { updateLabelValue(userContributionLabel, newValue); }
+    private void updateLastVisitLabel(Object newValue) { updateLabelValue(userLastVisitLabel, newValue); }
+    private void updateRegisteredLabel(Object newValue) { updateLabelValue(userRegisteredLabel, newValue); }
 
     @FXML public void rememberChanges(ActionEvent event) {
-        beforeHandleLabel.setText(nowHandleLabel.getText()); updateDefaultLabels(beforeHandleLabel, nowHandleLabel);
-        beforeEmailLabel.setText(nowEmailLabel.getText()); updateDefaultLabels(beforeEmailLabel, nowEmailLabel);
-        beforeVkIDLabel.setText(nowVkIDLabel.getText()); updateDefaultLabels(beforeVkIDLabel, nowVkIDLabel);
-        beforeOpenIDLabel.setText(nowOpenIDLabel.getText()); updateDefaultLabels(beforeOpenIDLabel, nowOpenIDLabel);
-        beforeFirstNameLabel.setText(nowFirstNameLabel.getText()); updateDefaultLabels(beforeFirstNameLabel, nowFirstNameLabel);
-        beforeLastNameLabel.setText(nowLastNameLabel.getText()); updateDefaultLabels(beforeLastNameLabel, nowLastNameLabel);
-        beforeCountryLabel.setText(nowCountryLabel.getText()); updateDefaultLabels(beforeCountryLabel, nowCountryLabel);
-        beforeCityLabel.setText(nowCityLabel.getText()); updateDefaultLabels(beforeCityLabel, nowCityLabel);
-        beforeOrganizationLabel.setText(nowOrganizationLabel.getText()); updateDefaultLabels(beforeOrganizationLabel, nowOrganizationLabel);
-        beforeContributionLabel.setText(nowContributionLabel.getText()); updateDefaultLabels(beforeContributionLabel, nowContributionLabel);
-        beforeRankLabel.setText(nowRankLabel.getText()); updateDefaultLabels(beforeRankLabel, nowRankLabel);
-        beforeMaxRankLabel.setText(nowMaxRankLabel.getText()); updateDefaultLabels(beforeMaxRankLabel, nowMaxRankLabel);
-        beforeRatingLabel.setText(nowRatingLabel.getText()); updateDefaultLabels(beforeRatingLabel, nowRatingLabel);
-        beforeMaxRatingLabel.setText(nowMaxRatingLabel.getText()); updateDefaultLabels(beforeMaxRatingLabel, nowMaxRatingLabel);
-        beforeLastVisitLabel.setText(nowLastVisitLabel.getText()); updateDefaultLabels(beforeLastVisitLabel, nowLastVisitLabel);
-        beforeRegisteredLabel.setText(nowRegisteredLabel.getText()); updateDefaultLabels(beforeRegisteredLabel, nowRegisteredLabel);
+        resetLabelToDefault(userHandleLabel);
+        resetLabelToDefault(userEmailLabel);
+        resetLabelToDefault(userVkIDLabel);
+        resetLabelToDefault(userOpenIDLabel);
+        resetLabelToDefault(userFirstNameLabel);
+        resetLabelToDefault(userLastNameLabel);
+        resetLabelToDefault(userCountryLabel);
+        resetLabelToDefault(userCityLabel);
+        resetLabelToDefault(userOrganizationLabel);
+        resetLabelToDefault(userContributionLabel);
+        resetPaneToDefault(userRatingAndRankPane);
+        resetPaneToDefault(userMaxRatingAndMaxRankPane);
+        resetLabelToDefault(userLastVisitLabel);
+        resetLabelToDefault(userRegisteredLabel);
     }
-    private void updateDefaultLabels(Label labelBefore, Label labelNow) {
-        labelNow.getStyleClass().removeIf(s -> s.equals("changedNowLabel"));
-        labelBefore.getStyleClass().setAll(labelNow.getStyleClass());
+    private void resetLabelToDefault(Label label) {
+        MutablePair<String, String> values = labelValues.get(label);
+
+        if (values.getRight() == null) return;
+
+        values.setLeft(values.getRight());
+
+        label.setText(values.getLeft());
+
+        setUpdatedStyle(label, false);
     }
-    private void updateChangedLabels(Label labelBefore, Label labelNow, Object newValue) {
-        Runnable update = () -> {
+    private void resetPaneToDefault(Pane pane) {
+        ObservableList<Node> children = pane.getChildren();
 
-            labelBefore.getStyleClass().removeIf(s -> s.equals("defaultBeforeAndNowLabel"));
-            labelNow.getStyleClass().removeIf(s -> s.equals("defaultBeforeAndNowLabel"));
+        if (children.size() != 5) return;
 
-            labelBefore.getStyleClass().add("changedBeforeLabel");
-            labelNow.getStyleClass().add("changedNowLabel");
+        Node ratingNow = children.get(3);
+        Node rankNow = children.get(4);
 
-            if (newValue == null) {
-                labelNow.setText("");
-                return;
+        children.setAll(ratingNow, rankNow);
+
+        setUpdatedStyle(pane, false);
+    }
+
+    @SuppressWarnings("all")
+    private void updateRatingAndRankValue(Pane ratingAndRankPane, Integer newRating, String newRank) {
+        String ratingStyle = getRatingStyle(newRating);
+
+        ObservableList<Node> children = ratingAndRankPane.getChildren();
+        Label t1;
+        Label t2;
+
+        if (children.size() == 5) {
+            t1 = (Label) children.get(3);
+            t2 = (Label) children.get(4);
+            t1.setText(newRating.toString());
+            t2.setText(newRank);
+        } else {
+            if (children.size() == 2) children.add(getDelimiter());
+            t1 = new Label(newRating.toString());
+            t2 = new Label(newRank);
+            t1.setStyle("-fx-alignment: center-right");
+            t2.setStyle("-fx-alignment: center-left");
+            children.addAll(t1, t2);
+        }
+
+        t1.getStyleClass().add(ratingStyle);
+        t2.getStyleClass().add(ratingStyle);
+
+        if (children.size() == 5) {
+            Label before = (Label) children.get(0);
+            Label now = (Label) children.get(3);
+            if (before.getText().equals(now.getText())) {
+                resetPaneToDefault(ratingAndRankPane);
             } else {
-                labelNow.setText(newValue.toString());
+                setUpdatedStyle(ratingAndRankPane, true);
             }
-
-            if (labelNow == nowRatingLabel || labelNow == nowMaxRatingLabel) {
-                int rating = Integer.parseInt(newValue.toString());
-                String ratingColor = getRatingColor(rating);
-
-                if (labelNow == nowRatingLabel) {
-                    nowRatingLabel.getStyleClass().removeIf(s -> s.startsWith("rank"));
-                    nowRankLabel  .getStyleClass().removeIf(s -> s.startsWith("rank"));
-                    nowRatingLabel.getStyleClass().add(ratingColor);
-                    nowRankLabel  .getStyleClass().add(ratingColor);
-                } else {    //  labelNow == nowMaxRatingLabel
-                    nowMaxRatingLabel.getStyleClass().removeIf(s -> s.startsWith("rank"));
-                    nowMaxRankLabel  .getStyleClass().removeIf(s -> s.startsWith("rank"));
-                    nowMaxRatingLabel.getStyleClass().add(ratingColor);
-                    nowMaxRankLabel  .getStyleClass().add(ratingColor);
-                }
-            }
-
-            if (labelNow == nowLastVisitLabel || labelNow == nowRegisteredLabel) {
-                Long time = Long.parseLong(newValue.toString());
-                ZoneOffset offset = OffsetDateTime.now().getOffset();
-                LocalDateTime ldt = LocalDateTime.ofEpochSecond(time, 0, offset);
-                String formattedTime = ldt.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG, FormatStyle.MEDIUM));
-
-                if (labelNow == nowLastVisitLabel) {
-                    nowLastVisitLabel.setText(formattedTime);
-                } else {
-                    nowRegisteredLabel.setText(formattedTime);
-                }
-            }
-        };
-
-        if (Platform.isFxApplicationThread()) update.run();
-        else Platform.runLater(update);
+        }
     }
-    private String getRatingColor(int rating) {
+    private void updateLabelValue(Label label, Object newValue) {
+        if (newValue == null) {
+            newValue = "";
+        } else if (label == userLastVisitLabel || label == userRegisteredLabel) {
+            LocalDateTime ldt = LocalDateTime.ofEpochSecond((Integer) newValue, 0, OffsetDateTime.now().getOffset());
+            newValue = ldt.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM, FormatStyle.MEDIUM));
+        }
+
+        MutablePair<String, String> values = labelValues.get(label);
+        if (values.getLeft() == null) {
+            values.setLeft(newValue.toString());
+            label.setText(values.getLeft());
+        } else {
+            values.setRight(newValue.toString());
+            if (values.getLeft().equals(values.getRight())) {
+                resetLabelToDefault(label);
+            } else {
+                label.setText(values.getLeft() +  " \u2192 " + values.getRight());
+                setUpdatedStyle(label, true);
+            }
+        }
+    }
+    private void setUpdatedStyle(Node node, boolean isUpdated) {
+        ObservableList<String> styleClass = node.getStyleClass();
+        String styleName = "user-data-updated-cell";
+
+        if (isUpdated) styleClass.add(styleName);
+        else styleClass.removeIf(s -> s.equals(styleName));
+    }
+    private Node getDelimiter() {
+        Label label = new Label("=>");
+        label.setTextFill(Color.WHITE);
+        return label;
+    }
+    private String getRatingStyle(int rating) {
         if (rating >= 2600) return "rankInternationalGrandmaster";
         else if (rating >= 2200) return "rankGrandmaster";
         else if (rating >= 2050) return "rankInternationalMaster";
@@ -241,7 +270,7 @@ public class UserSeekerGridController implements Initializable {
         else return "rankNobody";
     }
 
-    public Pane getFullUserPane() {
-        return fullUserPane;
+    public Pane getFullUserSide() {
+        return fullUserSide;
     }
 }

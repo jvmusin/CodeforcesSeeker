@@ -8,7 +8,7 @@
 <?import javafx.scene.effect.GaussianBlur?>
 <SplitPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" stylesheets="css/user-list-side.css" fx:controller="controller.UserSeekerLayoutController">
     <items>
-        <VBox fx:id="fullSide">
+        <VBox fx:id="fullListSide">
             <children>
                 <Label text="Handles" id="handlesHeaderLabel" >
                     <effect>

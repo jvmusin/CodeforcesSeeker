@@ -2,11 +2,14 @@ package core;
 
 import base.User;
 import controller.UserSeekerGridController;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
-import java.util.regex.Pattern;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.RunnableFuture;
 
 public class UserDataHolder implements Comparable<User> {
     private UserSeekerGridController gridController;
@@ -26,7 +29,7 @@ public class UserDataHolder implements Comparable<User> {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/UserSeekerGrid.fxml"));
                 loader.load();
                 gridController = loader.getController();
-                gridController.setUser(user);
+                Platform.runLater(() -> gridController.setUser(user));
             } catch (IOException ioe) {
                 ioe.printStackTrace();
                 return null;
@@ -35,12 +38,22 @@ public class UserDataHolder implements Comparable<User> {
         return gridController;
     }
 
-    public Pane getFullUserPane() {
-        return getGridController().getFullUserPane();
+    public Pane getFullUserSide() {
+        return getGridController().getFullUserSide();
     }
 
     public boolean compareAndChangeLabels(User userNow) {
-        return getGridController().updateUserIfPossible(userNow);
+        RunnableFuture<Boolean> updater = new FutureTask<>(() -> getGridController().tryUpdateUser(userNow));
+        Platform.runLater(updater);
+
+        boolean updated = false;
+        try {
+            updated = updater.get();
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+            ServiceHolder.getMainApp().closeApplication();
+        }
+        return updated;
     }
 
     @Override

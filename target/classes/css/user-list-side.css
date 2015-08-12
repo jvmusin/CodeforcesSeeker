@@ -1,13 +1,13 @@
-#fullSide {
+#fullListSide {
     -fx-background-color: aquamarine;
     -fx-font-family: "Comic Sans MS";
-    -fx-max-width: 23em;
-    -fx-pref-width: 23em;
     -fx-min-width: 15.1em;
+    -fx-pref-width: 23em;
+    -fx-max-width: 23em;
+    -fx-max-height: 2000em;
     -fx-padding: 1em;
     -fx-spacing: 0.8em;
     -fx-alignment: center;
-    -fx-max-height: 2000em;
 }
 
 #handlesHeaderLabel {
@@ -31,7 +31,7 @@
 
 #userFinderHandleField {
     -fx-alignment: center-left;
-    -fx-pref-width: 20em;
+    -fx-pref-width: 2000em;
 }
 
 #userFinderFindButton {

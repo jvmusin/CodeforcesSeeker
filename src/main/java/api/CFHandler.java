@@ -121,7 +121,7 @@ public class CFHandler implements InvocationHandler {
                 String json = br.readLine();
                 return json;
             });
-            ServiceHolder.getMainApp().getPool().submit(sender);
+            ServiceHolder.getMainApp().submitTask(sender);
             return sender.get(2, TimeUnit.SECONDS);
         } catch (InterruptedException | TimeoutException | ExecutionException e) {
             return getFailedCFResponseJson(e);

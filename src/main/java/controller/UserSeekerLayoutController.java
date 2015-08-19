@@ -68,7 +68,7 @@ public class UserSeekerLayoutController implements Initializable {
             return;
         }
 
-        ServiceHolder.getMainApp().getPool().submit(() -> {
+        ServiceHolder.getMainApp().submitTask(() -> {
             Platform.runLater(() -> {
                 userFinderStatusLabel.setText("Finding " + handle);
                 userFinderStatusLabel.setId("userFindingInProcessLabel");

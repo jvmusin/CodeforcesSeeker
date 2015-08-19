@@ -32,7 +32,7 @@ public class UserSeeker {
     }
 
     public void startSeeking() {
-        ServiceHolder.getMainApp().getPool().submit(this::seek);
+        ServiceHolder.getMainApp().submitTask(this::seek);
     }
 
     private void seek() {
@@ -77,8 +77,8 @@ public class UserSeeker {
                 if (updatedUsers != null)
                     showUsersUpdatedAlert(updatedUsers);
             } catch (InterruptedException | ExecutionException e) {
-                e.printStackTrace();
                 ServiceHolder.getMainApp().closeApplication();
+                System.err.println("UserSeeker has been interrupted");
                 return;
             } catch (ConcurrentModificationException ignored) {}
         }
